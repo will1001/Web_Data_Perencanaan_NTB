@@ -31,4 +31,12 @@ class Site extends CI_Controller {
 		$this->load->view('templates/footer');	
 		$this->load->view('site/urusan_wajib_vue');
 	}
+	public function data_ditail($id)
+	{
+		$data['id'] = $id;
+		$this->load->view('templates/header');
+		$this->load->view('site/ditail');
+		$this->load->view('templates/footer');	
+		$this->load->view('site/ditail_vue',$data);
+	}
 }

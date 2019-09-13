@@ -1,6 +1,11 @@
 <?php
 class Data extends CI_Controller {
 	
+	public function get_byId($id)
+	{
+		$data = $this->data_model->get_data_byId($id);
+		echo json_encode($data);
+	}
 	public function get($id = null)
 	{
 		$data = $this->data_model->get_data($id);

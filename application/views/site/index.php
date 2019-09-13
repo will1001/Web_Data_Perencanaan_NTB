@@ -8,7 +8,7 @@
         <i class="material-icons right">touch_app</i>
     </a>
 </p>
-<table class="table table-bordered">
+<table class="table">
     <thead>
         <tr>
         	<th>No</th>
@@ -49,7 +49,7 @@
             <td>{{ getTahun(item.tahun) }}</td>
             <td>{{ getSumberDataId(item.id_sumber_data) }}</td>
             <td>  
-                <button class="btn waves-effect waves-dark" @click="data_view(item)" title="Show Data"><i class="material-icons">visibility</i></button>
+                <a class="btn waves-effect waves-dark" :href="lokasi+item.id" title="Show Data"><i class="material-icons">visibility</i></a>
                 <button class="btn waves-effect waves-dark" @click="data_update(item)" title="Update Data"><i class="material-icons">edit</i></button>
                 <button class="btn waves-effect waves-dark" @click="data_delete(item)" title="Delete Data"><i class="material-icons">delete</i></button>
             </td>

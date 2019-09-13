@@ -70,6 +70,16 @@ var main = new Vue({
                 vm.items = 'Error: '+ error;
             });
         },
+        loadData_byId: function(id){
+            this.items = 'Loading';
+            var vm = this;
+            axios.get(this.base_url+'data/get_byId/'+id)
+            .then(function(response){
+                vm.items = response.data;
+            }).catch(function(error){
+                vm.items = 'Error: '+ error;
+            });
+        },
         loadKategori: function(id){
             var vm = this;
             axios.get(this.base_url+'data/get_kategori/'+id)
@@ -172,6 +182,9 @@ var main = new Vue({
             console.log('Updating Data');
         },
         data_view: function(data){
+            vm.loadData();
+            // console.log(response.data);
+            window.location=vm.lokasi;
             console.log('Showing Data');
         },
         toFormData: function(obj){

@@ -7,6 +7,31 @@ class Data_model extends CI_Model{
 	public function delete($id){
 		$this->db->delete('data', array('id' => $id)); 
 	}
+
+	public function get_data_byId($id){
+		
+		$query = $this->db->where('id', $id)->get('data');
+		$data = $query->result_array();
+		if(!$data) return null;
+		// Ambil Keterangan jadikan array
+		foreach ($data as $key => $value) {
+			$query = $this->db->select('ket.id, id_label, label.nama')->where('id_data', $value['id'])
+			->from('keterangan ket')->join('label', 'id_label = label.id');
+			$query = $this->db->get();
+			$data[$key]['keterangan'] = $query->result_array();
+		}
+		foreach ($data as $key => $value) {
+			$query = $this->db->where('id', $value['id_kab_kota'])
+			->from('kab_kota')->get();
+			$data[$key]['kab_kota'] = $query->row_array();
+		}
+		foreach ($data as $key => $value) {
+			$query = $this->db->where('id', $value['id_kategori'])
+			->from('kategori')->get();
+			$data[$key]['kategori'] = $query->row_array();
+		}
+		return $data = $data[0];
+	}
 	public function get_data($id = NULL){
 		if($id === NULL){
 			$query = $this->db->get('data');
