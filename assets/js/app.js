@@ -2,7 +2,7 @@
 var main = new Vue({
     el: '#main-app',
     data: {
-        base_url: 'http://localhost/job/web-sipd/',
+        base_url: 'http://localhost/job/Web_Data_Perencanaan_NTB/',
         lokasi: '',
         items: [],
         addKeterangan: true,
