@@ -1,44 +1,50 @@
 <?php
 class Data extends CI_Controller {
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('data_model','mData');
+    }
 	
 	public function get_byId($id)
 	{
-		$data = $this->data_model->get_data_byId($id);
+		$data = $this->mData->get_data_byId($id);
 		echo json_encode($data);
 	}
 	public function get($id = null)
 	{
-		$data = $this->data_model->get_data($id);
+		$data = $this->mData->get_data($id);
 		echo json_encode($data);
 	}
 	public function get_sumber_data()
 	{
-		$data = $this->data_model->get_sumber_data();
+		$data = $this->mData->get_sumber_data();
 		echo json_encode($data);
 	}
 	public function get_provinsi()
 	{
-		$data = $this->data_model->get_provinsi();
+		$data = $this->mData->get_provinsi();
 		echo json_encode($data);
 	}
 	public function get_kab_kota()
 	{
-		$data = $this->data_model->get_kab_kota();
+		$data = $this->mData->get_kab_kota();
 		echo json_encode($data);
 	}
 	public function get_kategori($id)
 	{
-		$data = $this->data_model->get_kategori($id);
+		$data = $this->mData->get_kategori($id);
 		echo json_encode($data);
 	}
 	public function get_kategoriAll($id)
 	{
-		$data = $this->data_model->get_kategoriAll($id);
+		$data = $this->mData->get_kategoriAll($id);
 		echo json_encode($data);
 	}
 	public function get_bagian()
 	{
-		$data = $this->data_model->get_bagian();
+		$data = $this->mData->get_bagian();
 		echo json_encode($data);
 	}
 	public function create()
@@ -69,7 +75,7 @@ class Data extends CI_Controller {
 			'updated_at' => NULL,
 		];
 		//simpan data dan ambil id_data
-		$id_data = $this->data_model->add_data($data);
+		$id_data = $this->mData->add_data($data);
 
 		$nama_keterangan = $this->input->post('nama_keterangan[]');
 
@@ -105,7 +111,7 @@ class Data extends CI_Controller {
 		$id = $this->input->post('id');
 		// echo 'berhasil mengakses data id-'.$id;
 		if($id){
-			$this->data_model->delete($id);
+			$this->mData->delete($id);
 		}
 	}
 }
