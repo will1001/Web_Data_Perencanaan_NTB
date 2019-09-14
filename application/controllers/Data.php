@@ -5,6 +5,8 @@ class Data extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('data_model','mData');
+        $this->load->model('label_model','mLabel');
+        $this->load->model('keterangan_model','mKeterangan');
     }
 	
 	public function get_byId($id)
@@ -87,9 +89,9 @@ class Data extends CI_Controller {
 			];
 			//cari label yang sama, Jika tidak ada simpan,
 			//kemudian ambil id_label nya sebanyak keterangan yang di inputkan
-			$id_labels[$key] = $this->label_model->getId($keterangan);
+			$id_labels[$key] = $this->mLabel->getId($keterangan);
 			if(!$id_labels[$key])
-				$id_labels[$key] = $this->label_model->add($label);
+				$id_labels[$key] = $this->mLabel->add($label);
 		}
 
 		// simpan semua keterangan, sebanyak keterangan yang di inputkan
@@ -98,7 +100,7 @@ class Data extends CI_Controller {
 				'id_data' => $id_data,
 				'id_label' => $id_label,
 			];
-			$this->keterangan_model->add($keterangan);
+			$this->mKeterangan->add($keterangan);
 		}
 
 	}
