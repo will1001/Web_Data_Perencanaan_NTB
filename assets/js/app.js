@@ -152,6 +152,10 @@ var main = new Vue({
             if(timestamp)
                 return timestamp.substring(0, 4);
         },
+        getDate: function(timestamp){
+            if(timestamp)
+                return timestamp.substring(0, 10);
+        },
         getSumberDataId: function(sumberData){
             if(!sumberData)
                 return 0;
