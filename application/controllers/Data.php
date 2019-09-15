@@ -102,7 +102,8 @@ class Data extends CI_Controller {
 			];
 			$this->mKeterangan->update($keterangan,$id_keterangan[$key]);
 		}
-		redirect(base_url()."site/index/".$id_kategori);
+		echo $id_kategori;
+		// redirect(base_url()."site/index/".$id_kategori);
 
 	}
 	public function create()
@@ -112,6 +113,8 @@ class Data extends CI_Controller {
 		
 		$id_sumber_data = $this->input->post('id_sumber_data');
 		if(!$id_sumber_data) $id_sumber_data = null;
+
+		$id_kategori = $this->input->post('id_kategori');
 
 		$data = [
 			// 'nama_data' => 'coba 1',
