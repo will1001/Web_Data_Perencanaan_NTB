@@ -99,4 +99,8 @@ class Data_model extends CI_Model{
 		$insert_id = $this->db->insert_id();
 		return  $insert_id;
 	}
+	public function data_update($data,$id){
+		$this->db->where('id', $id);
+		$this->db->update('data', $data);
+	}
 }

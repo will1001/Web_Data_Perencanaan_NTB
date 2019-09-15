@@ -50,7 +50,7 @@
             <td>{{ getSumberDataId(item.id_sumber_data) }}</td>
             <td>  
                 <a class="btn waves-effect waves-dark" :href="lokasi+item.id" title="Show Data"><i class="material-icons">visibility</i></a>
-                <button class="btn waves-effect waves-dark" @click="data_update(item)" title="Update Data"><i class="material-icons">edit</i></button>
+                <a class="btn waves-effect waves-dark" :href="base_url+'site/update/'+item.id" title="Update Data"><i class="material-icons">edit</i></a>
                 <button class="btn waves-effect waves-dark" @click="data_delete(item)" title="Delete Data"><i class="material-icons">delete</i></button>
             </td>
         </tr>

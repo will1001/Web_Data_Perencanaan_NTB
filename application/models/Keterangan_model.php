@@ -10,4 +10,7 @@ class Keterangan_model extends CI_Model{
 		// $insert_id = $this->db->insert_id();
 		// return  $insert_id;
 	}
+	public function update($data,$id){
+		$this->db->where('id',$id)->update('keterangan',$data);
+	}
 }

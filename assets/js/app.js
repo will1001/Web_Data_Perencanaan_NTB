@@ -40,6 +40,7 @@ var main = new Vue({
         kategori: [],
         kategoriAll: [],
         provinsi: [],
+        update: false,
     },
     created: function(){
         // this.loadData();
@@ -57,6 +58,10 @@ var main = new Vue({
         var dropdowns = document.querySelectorAll('.dropdown-trigger')
         for (var i = 0; i < dropdowns.length; i++){
             M.Dropdown.init(dropdowns[i]);
+        }
+        if(this.update){   
+            //update form materialize 
+            M.updateTextFields();
         }
     },
     methods: {
@@ -76,6 +81,12 @@ var main = new Vue({
             axios.get(this.base_url+'data/get_byId/'+id)
             .then(function(response){
                 vm.items = response.data;
+                vm.newItem = vm.items;
+                // isi keterangan
+                vm.newKeterangan = vm.newItem.keterangan;
+                vm.loadKategori(vm.newItem.id_kategori);
+                //update form materialize 
+                vm.update = true;
             }).catch(function(error){
                 vm.items = 'Error: '+ error;
             });

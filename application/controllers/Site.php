@@ -13,9 +13,13 @@ class Site extends CI_Controller {
 	{
 		$data['id_kategori'] = $id_kategori;
 		$this->load->view('templates/header');
-		$this->load->view('site/_form');
-		$this->load->view('templates/footer');
-		$this->load->view('site/create_vue',$data);
+		$this->load->view('site/create',$data);
+	}
+	public function update($id)
+	{
+		$data['id'] = $id;
+		$this->load->view('templates/header');
+		$this->load->view('site/update',$data);
 	}
 	public function data_pilihan()
 	{

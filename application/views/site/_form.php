@@ -1,9 +1,4 @@
-            
 
-            <h4 class="center-align">{{ kategori.nama_bagian }}</h4>
-            <h3 class="center-align">Tambah Data Kategori {{ kategori.nama }}</h3>
-            <h6 class="center-align">Provinsi {{ provinsi.nama }}</h6><br>
-            <form action="<?= base_url()?>data/create" method="post">
             <div class="row">
                 <div class="input-field col s12 m6">
                 <input name="nama_data" id="form_nama_data" type="text" class="validate" v-model="newItem.nama_data" required>
@@ -49,13 +44,13 @@
                 <label class="active" for="form_satuan">Satuan</label>
                 </div>
                 <div class="input-field col s12 m4">
-                <input name="tahun" id="form_tahun" type="number" min="2017" max="2099" step="1" v-model="newItem.tahun" required>
+                <input name="tahun" id="form_tahun" type="number" min="2017" max="2099" step="1" :value="getTahun(newItem.tahun)" required>
                 <label class="active" for="form_tahun">Tahun</label>
                 </div>
                 
                 <div class="input-field col s12 m12">
                 <!-- <input value="" id="form_sumber_data" type="text" class="validate" v-model="newItem.sumber_data"> -->
-                    <select name="" id="form_id_sumber_data" v-model="newItem.id_sumber_data">
+                    <select name="id_sumber_data" id="form_id_sumber_data" v-model="newItem.id_sumber_data">
                         <option value="" disabled selected>Pilih Sumber Data</option>
                         <option value="">-</option>
                         <option v-for="sumber in sumber_data" :value="sumber.id">{{sumber.nama_sumber}}</option>
@@ -64,7 +59,7 @@
                 </div>
                 <div class="input-field col s12 m12">
                 <br>
-                    <label >
+                    <label>
                         <input type="checkbox" class="filled-in" checked="checked" v-model="addKeterangan" @click="keterangan_reset()" />
                         <span>ISI KETERANGAN</span>
                     </label>
@@ -74,6 +69,7 @@
                         <div class="input-field col s10 m10">
                             <input :name="'nama_keterangan['+index+']'" value="" :id="'form_keterangan['+index+']'" type="text" class="validate" v-model="label.nama">
                             <label :for="'form_keterangan['+index+']'">Keterangan {{label.no}}</label>
+                            <input :name="'id_keterangan['+index+']'" type="number" :value="label.id" hidden>
                         </div>
                         <div class="input-field col s2 m2" v-if="index == (newKeterangan.length-1)">
                             <button type="button" class="btn waves-effect waves-dark" @click="formKeterangan_add()"><i class="material-icons">add</i></button>
