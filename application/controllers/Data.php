@@ -72,8 +72,8 @@ class Data extends CI_Controller {
 			'id_sumber_data' => $id_sumber_data,
 			'nilai' => $this->input->post('nilai'),
 			'satuan' => $this->input->post('satuan'),
-			'tahun' => null,
-			'created_at' => NULL,
+			'tahun' => date("Y/m/d"),
+			'created_at' => date("Y/m/d"),
 			'updated_at' => NULL,
 		];
 		//simpan data dan ambil id_data
