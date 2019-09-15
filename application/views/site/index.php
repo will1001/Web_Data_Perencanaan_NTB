@@ -23,6 +23,7 @@
             <!-- <th>Nama Data</th> -->
             <th>Nilai</th>
             <th>Satuan</th>
+            <th>Semester</th>
             <th>Tahun</th>
             <th>Sumber Data</th>
             <th></th>
@@ -46,6 +47,7 @@
             <!-- <td>{{ item.nama_data }}</td> -->
             <td>{{ item.nilai }}</td>
             <td>{{ item.satuan }}</td>
+            <td>{{ item.semester }}</td>
             <td>{{ getTahun(item.tahun) }}</td>
             <td>{{ getSumberDataId(item.id_sumber_data) }}</td>
             <td>  

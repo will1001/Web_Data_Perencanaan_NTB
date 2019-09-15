@@ -24,6 +24,16 @@ class Data_api_model extends CI_Model
                 foreach ($keterangan as $i => $ket) {
                     $data[$key]['sub_ket'.++$i] = $ket['nama'];			
                 }
+                //tambahkan kolom semester Ganjil Genap
+                $tahun = $data[$key]['tahun'];
+                if($tahun){
+                    $month = date("m",strtotime($tahun));
+                    if($month < 07 ){
+                        $data[$key]['semester'] = 'Ganjil';
+                    } else {
+                        $data[$key]['semester'] = "Genap";
+                    } 
+                }    
             }
             foreach ($data as $key => $value) {
                 $query = $this->db->where('id', $value['id_kab_kota'])
@@ -64,6 +74,16 @@ class Data_api_model extends CI_Model
                 // for yang di atas bisa dihapus
                 foreach ($keterangan as $i => $ket) {
                     $data[$key]['sub_ket'.++$i] = $ket['nama'];			
+                }
+                //tambahkan kolom semester Ganjil Genap
+                $tahun = $data[$key]['tahun'];
+                if($tahun){
+                    $month = date("m",strtotime($tahun));
+                    if($month < 07 ){
+                        $data[$key]['semester'] = 'Ganjil';
+                    } else {
+                        $data[$key]['semester'] = "Genap";
+                    } 
                 }
             }
             foreach ($data as $key => $value) {

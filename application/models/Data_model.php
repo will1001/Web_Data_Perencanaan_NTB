@@ -19,6 +19,16 @@ class Data_model extends CI_Model{
 			->from('keterangan ket')->join('label', 'id_label = label.id');
 			$query = $this->db->get();
 			$data[$key]['keterangan'] = $query->result_array();
+			//tambahkan kolom semester Ganjil Genap
+			$tahun = $data[$key]['tahun'];
+			if($tahun){
+				$month = date("m",strtotime($tahun));
+				if($month < 07 ){
+					$data[$key]['semester'] = 'Ganjil';
+				} else {
+					$data[$key]['semester'] = "Genap";
+				} 
+			}
 		}
 		foreach ($data as $key => $value) {
 			$query = $this->db->where('id', $value['id_kab_kota'])
@@ -49,6 +59,16 @@ class Data_model extends CI_Model{
 			->from('keterangan ket')->join('label', 'id_label = label.id');
 			$query = $this->db->get();
 			$data[$key]['keterangan'] = $query->result_array();
+			//tambahkan kolom semester Ganjil Genap
+			$tahun = $data[$key]['tahun'];
+			if($tahun){
+				$month = date("m",strtotime($tahun));
+				if($month < 07 ){
+					$data[$key]['semester'] = 'Ganjil';
+				} else {
+					$data[$key]['semester'] = "Genap";
+				} 
+			}
 		}
 		foreach ($data as $key => $value) {
 			$query = $this->db->where('id', $value['id_kab_kota'])
