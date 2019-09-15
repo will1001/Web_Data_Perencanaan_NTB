@@ -55,13 +55,15 @@ class Data extends CI_Controller {
 		
 		$id_sumber_data = $this->input->post('id_sumber_data');
 		if(!$id_sumber_data) $id_sumber_data = null;
+		
+		$id_kategori = $this->input->post('id_kategori');
 
 		$data = [
 			// 'nama_data' => 'coba 1',
 			// 'id_kategori' => "2",
 			// 'id_prov' => "52",
 			'nama_data' => $this->input->post('nama_data'),
-			'id_kategori' => $this->input->post('id_kategori'),
+			'id_kategori' => $id_kategori,
 			'id_prov' => $this->input->post('id_prov'),
 			'id_kab_kota' => $id_kab_kota,
 			'kec' => $this->input->post('kec'),
@@ -100,10 +102,14 @@ class Data extends CI_Controller {
 				'id_data' => $id,
 				'id_label' => $id_label,
 			];
-			$this->mKeterangan->update($keterangan,$id_keterangan[$key]);
+			// jika ada id_keterangan, update. Jika TIDAK ada, tambah data
+			if($id_keterangan[$key]){
+				$this->mKeterangan->update($keterangan,$id_keterangan[$key]);
+			} else {
+				$this->mKeterangan->add($keterangan);
+			}
 		}
-		echo $id_kategori;
-		// redirect(base_url()."site/index/".$id_kategori);
+		redirect(base_url()."site/index/".$id_kategori);
 
 	}
 	public function create()
@@ -121,7 +127,7 @@ class Data extends CI_Controller {
 			// 'id_kategori' => "2",
 			// 'id_prov' => "52",
 			'nama_data' => $this->input->post('nama_data'),
-			'id_kategori' => $this->input->post('id_kategori'),
+			'id_kategori' => $id_kategori,
 			'id_prov' => $this->input->post('id_prov'),
 			'id_kab_kota' => $id_kab_kota,
 			'kec' => $this->input->post('kec'),

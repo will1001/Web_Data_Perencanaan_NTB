@@ -68,7 +68,7 @@
                     <template v-for="(label, index) in newKeterangan" >
                         <div class="input-field col s10 m10">
                             <input :name="'nama_keterangan['+index+']'" value="" :id="'form_keterangan['+index+']'" type="text" class="validate" v-model="label.nama">
-                            <label :for="'form_keterangan['+index+']'">Keterangan {{label.no}}</label>
+                            <label :for="'form_keterangan['+index+']'">Keterangan {{index+1}}</label>
                             <input :name="'id_keterangan['+index+']'" type="number" :value="label.id" hidden>
                         </div>
                         <div class="input-field col s2 m2" v-if="index == (newKeterangan.length-1)">
