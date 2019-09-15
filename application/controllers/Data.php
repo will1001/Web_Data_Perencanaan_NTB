@@ -73,7 +73,7 @@ class Data extends CI_Controller {
 			'id_sumber_data' => $id_sumber_data,
 			'nilai' => $this->input->post('nilai'),
 			'satuan' => $this->input->post('satuan'),
-			'tahun' => date("Y/m/d"),
+			'tahun' => $this->input->post('tahun'),
 			'updated_at' => date("Y/m/d"),
 		];
 		//simpan data dan ambil id_data
@@ -121,7 +121,7 @@ class Data extends CI_Controller {
 		if(!$id_sumber_data) $id_sumber_data = null;
 
 		$id_kategori = $this->input->post('id_kategori');
-
+		
 		$data = [
 			// 'nama_data' => 'coba 1',
 			// 'id_kategori' => "2",
@@ -137,7 +137,7 @@ class Data extends CI_Controller {
 			'id_sumber_data' => $id_sumber_data,
 			'nilai' => $this->input->post('nilai'),
 			'satuan' => $this->input->post('satuan'),
-			'tahun' => date("Y/m/d"),
+			'tahun' => $this->input->post('tahun'),
 			'created_at' => date("Y/m/d"),
 			'updated_at' => NULL,
 		];

@@ -44,7 +44,7 @@
                 <label class="active" for="form_satuan">Satuan</label>
                 </div>
                 <div class="input-field col s12 m4">
-                <input name="tahun" id="form_tahun" type="number" min="2017" max="2099" step="1" :value="getTahun(newItem.tahun)" required>
+                <input name="tahun" id="form_tahun" type=date min="2017" max="2099" step="1" :value="getTahun(newItem.tahun)" required>
                 <label class="active" for="form_tahun">Tahun</label>
                 </div>
                 
