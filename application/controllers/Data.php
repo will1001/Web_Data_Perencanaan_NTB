@@ -82,18 +82,19 @@ class Data extends CI_Controller {
 		$nama_keterangan = $this->input->post('nama_keterangan[]');
 
 		$id_labels = [];
-		foreach ($nama_keterangan as $key => $keterangan) {	
-			if(!$keterangan) continue; //abaikan jika keterangan kosong/null
-			$label = [
-				'nama' => $keterangan,
-			];
-			//cari label yang sama, Jika tidak ada simpan,
-			//kemudian ambil id_label nya sebanyak keterangan yang di inputkan
-			$id_labels[$key] = $this->mLabel->getId($keterangan);
-			if(!$id_labels[$key])
-				$id_labels[$key] = $this->mLabel->add($label);
+		if($nama_keterangan){
+			foreach ($nama_keterangan as $key => $keterangan) {	
+				if(!$keterangan) continue; //abaikan jika keterangan kosong/null
+				$label = [
+					'nama' => $keterangan,
+				];
+				//cari label yang sama, Jika tidak ada simpan,
+				//kemudian ambil id_label nya sebanyak keterangan yang di inputkan
+				$id_labels[$key] = $this->mLabel->getId($keterangan);
+				if(!$id_labels[$key])
+					$id_labels[$key] = $this->mLabel->add($label);
+			}
 		}
-
 		// simpan semua keterangan, sebanyak keterangan yang di inputkan
 		foreach ($id_labels as $id_label) {
 			$keterangan = [
@@ -102,7 +103,7 @@ class Data extends CI_Controller {
 			];
 			$this->mKeterangan->add($keterangan);
 		}
-
+		redirect(base_url()."site/index/".$id_kategori);
 	}
 	public function update()
 	{
