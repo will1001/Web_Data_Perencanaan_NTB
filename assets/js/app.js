@@ -217,6 +217,7 @@ var main = new Vue({
                 });
                 vm.newKeterangan = keterangan;
             }
+            vm.update = false;
         },
         formKeterangan_delete: function(){
             var vm = this;
@@ -225,6 +226,7 @@ var main = new Vue({
             if(i>1){
                 keterangan.pop();
             }
+            vm.update = false;
         },
         keterangan_reset: function(){
             var vm = this;
@@ -243,6 +245,7 @@ var main = new Vue({
                 });
                 vm.newKeterangan = keterangan;
             }
+            vm.update = false;
         } 
     }
 });
