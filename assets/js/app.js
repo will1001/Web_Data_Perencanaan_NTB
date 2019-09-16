@@ -82,6 +82,8 @@ var main = new Vue({
             .then(function(response){
                 vm.items = response.data;
                 vm.newItem = vm.items;
+                //ubah tahun jadi date
+                vm.newItem.tahun = vm.newItem.tahun.substring(0,10);
                 // isi keterangan
                 vm.newKeterangan = vm.newItem.keterangan;
                 vm.loadKategori(vm.newItem.id_kategori);
@@ -153,8 +155,11 @@ var main = new Vue({
                 return timestamp.substring(0, 4);
         },
         getDate: function(timestamp){
-            if(timestamp)
+            if(timestamp){
+                //simpan nilai tahun
+                this.newItem.tahun = timestamp;
                 return timestamp.substring(0, 10);
+            }
         },
         getSumberDataId: function(sumberData){
             if(!sumberData)

@@ -36,7 +36,7 @@
                 <label class="active" for="form_elemen">Elemen</label>
                 </div>
                 <div class="input-field col s12 m4">
-                <input name="nilai" value="" id="form_nilai" type="number" class="validate" v-model="newItem.nilai" required>
+                <input name="nilai" value="" id="form_nilai" type="text" class="validate" v-model="newItem.nilai" required>
                 <label class="active" for="form_nilai">Nilai</label>
                 </div>
                 <div class="input-field col s12 m4">
@@ -44,7 +44,7 @@
                 <label class="active" for="form_satuan">Satuan</label>
                 </div>
                 <div class="input-field col s12 m4">
-                <input name="tahun" id="form_tahun" type=date min="2017" max="2099" step="1" :value="getDate(newItem.tahun)" required>
+                <input name="tahun" id="form_tahun" type=date min="2017" max="2099" step="1" v-model="newItem.tahun" required>
                 <label class="active" for="form_tahun">Tahun</label>
                 </div>
                 
