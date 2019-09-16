@@ -24,7 +24,7 @@ var main = new Vue({
             keterangan: '',
             nilai: '',
             satuan: '',
-            tahun: '2019',
+            tahun: '',
             id_sumber_data:'',
             created_at: '',
             updated_at: '',
