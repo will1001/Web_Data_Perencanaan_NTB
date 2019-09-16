@@ -64,8 +64,12 @@
                 <td v-else> - </td>
             </tr>
             <tr>
+                <th>Semester</th>
+                <td>{{items.semester}}</td>
+            </tr>
+            <tr>
                 <th>Tahun</th>
-                <td>{{items.tahun}}</td>
+                <td>{{getTahun(items.tahun)}}</td>
             </tr>
         </table>
     </div>
