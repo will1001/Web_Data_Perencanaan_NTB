@@ -1,6 +1,5 @@
 <?php
 class Data extends CI_Controller {
-
     public function __construct()
     {
         parent::__construct();
@@ -57,7 +56,6 @@ class Data extends CI_Controller {
 		if(!$id_sumber_data) $id_sumber_data = null;
 		
 		$id_kategori = $this->input->post('id_kategori');
-
 		$data = [
 			// 'nama_data' => 'coba 1',
 			// 'id_kategori' => "2",
@@ -78,10 +76,8 @@ class Data extends CI_Controller {
 		];
 		//simpan data dan ambil id_data
 		$this->mData->data_update($data,$id);
-
 		$nama_keterangan = $this->input->post('nama_keterangan[]');
 		$id_keterangan = $this->input->post('id_keterangan[]');
-
 		$id_labels = [];
 		if($nama_keterangan){
 			foreach ($nama_keterangan as $key => $keterangan) {	
@@ -110,7 +106,6 @@ class Data extends CI_Controller {
 			}
 		}
 		redirect(base_url()."site/index/".$id_kategori);
-
 	}
 	public function create()
 	{
@@ -119,7 +114,6 @@ class Data extends CI_Controller {
 		
 		$id_sumber_data = $this->input->post('id_sumber_data');
 		if(!$id_sumber_data) $id_sumber_data = null;
-
 		$id_kategori = $this->input->post('id_kategori');
 		
 		$data = [
@@ -143,9 +137,7 @@ class Data extends CI_Controller {
 		];
 		//simpan data dan ambil id_data
 		$id_data = $this->mData->add_data($data);
-
 		$nama_keterangan = $this->input->post('nama_keterangan[]');
-
 		$id_labels = [];
 		if($nama_keterangan){
 			foreach ($nama_keterangan as $key => $keterangan) {	
