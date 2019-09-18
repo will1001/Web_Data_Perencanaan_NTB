@@ -30,10 +30,9 @@
             <div class="row">
                 <div class="col s12 m12 l8 offset-l2">
                     <div class="card darken-1 center-align">
-                        <form action="<?= base_url() ?>auth/" method="POST">
+                        <form action="<?= base_url() ?>auth/register" method="POST">
                             <div class="card-content blue-grey-text darken-4">
-                                <h4 class=""><b>LOGIN</b></h4>
-                                <?= $this->session->flashdata('message'); ?>
+                                <h4 class=""><b>FORM REGISTRASI</b></h4>
                                 <div class="row">
                                     <div class="input-field col s10 offset-s1">
                                         <i class="material-icons prefix">account_circle</i>
@@ -43,9 +42,15 @@
                                     </div>
                                     <div class="input-field col s10 offset-s1">
                                         <i class="material-icons prefix">lock</i>
-                                        <input name="password" id="password" type="password" class="validate" value="<?= set_value('password') ?>">
-                                        <label for="password">Password</label>
-                                        <?= form_error('password', '<smal class="red-text text-accent-3 pl-3">', '</smal>'); ?>
+                                        <input name="password1" id="password1" type="password" class="validate" value="<?= set_value('password') ?>">
+                                        <label for="password1">Password</label>
+                                        <?= form_error('password1', '<smal class="red-text text-accent-3 pl-3">', '</smal>'); ?>
+                                    </div>
+                                    <div class="input-field col s10 offset-s1">
+                                        <i class="material-icons prefix">lock</i>
+                                        <input name="password2" id="password2" type="password" class="validate" value="<?= set_value('password') ?>">
+                                        <label for="password2">Repeat Password</label>
+                                        <?= form_error('password2', '<smal class="red-text text-accent-3 pl-3">', '</smal>'); ?>
                                     </div>
                                 </div>
                             </div>
