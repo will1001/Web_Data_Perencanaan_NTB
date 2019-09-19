@@ -179,13 +179,90 @@ class Data extends CI_Controller
 			$this->mData->delete($id);
 		}
 	}
-	public function baru()
+	public function import()
 	{
+		set_time_limit(1000);
+
+		// At start of script
+		$time_start = microtime(true);
+
 		$data1 = $this->input->post('data1');
-		$data = json_encode($data1);
-		echo $data;
-		// $someArray = json_decode($data, true);
-		// print_r($someArray);
+		$id_kategori = $this->input->post('id_kategori');
+		$data1 = json_decode($data1);
+
+		$data = [];
+		foreach ($data1 as $key => $dat) {
+			$id_kab_kota = $dat->kab_kota;
+			if ($id_kab_kota < 1) {
+				$id_kab_kota = null;
+			}
+			$nama_data = $dat->nama_data;
+			if (!$nama_data) {
+				$nama_data = "-";
+			}
+
+			$tahun = $dat->tahun . '/01/01';
+			$data[$key] = [];
+			$data[$key]['nama_data'] =  $nama_data;
+			$data[$key]['id_kategori'] =  $id_kategori;
+			$data[$key]['id_prov'] =  52;
+			$data[$key]['id_kab_kota'] =  $id_kab_kota;
+			$data[$key]['kec'] =  $dat->kec;
+			$data[$key]['urusan'] =  $dat->urusan;
+			$data[$key]['id_table'] =  $dat->id_table;
+			$data[$key]['elemen'] =  $dat->elemen;
+			$id_sumber_data = null;
+			if ($dat->sumber_data) {
+				// id_sumber_data tidak selalu ada
+				if (!$this->mData->get_sumber_data($dat->sumber_data)) {
+					// echo $dat->sumber_data;
+					$this->mData->add_sumber_data($dat->sumber_data);
+					// tambah sumber data jika id tidak ditemukan
+				}
+				$id_sumber_data = $dat->sumber_data;
+			}
+			$data[$key]['id_sumber_data'] = $id_sumber_data;
+			$data[$key]['nilai'] =  $dat->nilai;
+			$data[$key]['satuan'] =  $dat->satuan;
+			$data[$key]['tahun'] =  $tahun;
+			$data[$key]['created_at'] =  date("Y/m/d");
+			$data[$key]['updated_at'] =  null;
+			//Tambah Data baru 
+			$id_data = $this->mData->add_data($data[$key]);
+			$nama_keterangan = [];
+			$id_labels = [];
+			$data[$key]['keterangan'] =  [];
+			$j = 0;
+			$dat_ket = (array) $dat;
+			for ($i = 0; $i < 5; $i++) {
+				$keterangan = $nama_keterangan[$i] = $dat_ket['sub_ket' . ($i + 1)];
+				if (!$keterangan) continue; //abaikan jika keterangan kosong/null
+				$data[$key]['keterangan'][$j++] = $keterangan;
+				$label = [
+					'nama' => $keterangan,
+				];
+				//cari label yang sama, Jika tidak ada simpan,
+				//kemudian ambil id_label nya sebanyak keterangan yang di inputkan
+				$id_labels[$i] = $this->mLabel->getId($keterangan);
+				if (!$id_labels[$i])
+					$id_labels[$i] = $this->mLabel->add($label);
+			}
+			// simpan semua keterangan, sebanyak keterangan yang di inputkan
+			foreach ($id_labels as $id_label) {
+				$keterangan = [
+					'id_data' => $id_data,
+					'id_label' => $id_label,
+				];
+				$this->mKeterangan->add($keterangan);
+			}
+		}
+		// Anywhere else in the script
+		echo "berhasil/n";
+		echo 'Total execution time in seconds: ' . (microtime(true) - $time_start);
+		// print_r($someArray);        // Dump all data of the Array
+		// if ($someArray[0]["elemen"]) {
+		// 	// echo "berhasil";
+		// }
 		// $data =  [
 		// 	'elemen' => $elemen,
 		// 	'id_kategori' => $id_kategori,

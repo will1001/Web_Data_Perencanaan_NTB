@@ -125,16 +125,29 @@ class Data_model extends CI_Model
 		$query = $this->db->get('kab_kota');
 		return $query->result_array();
 	}
-	public function get_sumber_data()
+	public function get_sumber_data($id = null)
 	{
-		$query = $this->db->get('sumber_data');
-		return $query->result_array();
+		if ($id === NULL) {
+			$query = $this->db->get('sumber_data');
+			return $query->result_array();
+		} else {
+			$query = $this->db->where('id', $id)->get('sumber_data');
+			return $query->row_array();
+		}
+	}
+	public function add_sumber_data($id)
+	{
+		$data = [
+			'id' => $id,
+			'nama_sumber' => $id,
+		];
+		$this->db->insert('sumber_data', $data);
 	}
 	public function add_data($data)
 	{
 		$this->db->insert('data', $data);
 		$insert_id = $this->db->insert_id();
-		return  $insert_id;
+		return $insert_id;
 	}
 	public function data_update($data, $id)
 	{
