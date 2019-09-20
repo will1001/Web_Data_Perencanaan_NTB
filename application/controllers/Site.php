@@ -23,6 +23,12 @@ class Site extends CI_Controller
 		$this->load->view('templates/header');
 		$this->load->view('site/create', $data);
 	}
+	public function uploadfiles($id_kategori)
+	{
+		$data['id_kategori'] = $id_kategori;
+		$this->load->view('templates/header');
+		$this->load->view('site/uploadfiles',$data);
+	}
 	public function update($id)
 	{
 		$data['id'] = $id;

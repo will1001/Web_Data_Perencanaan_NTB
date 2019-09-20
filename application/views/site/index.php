@@ -7,6 +7,9 @@
     <a href="<?= base_url().'site/create/'.$id_kategori?>" class="btn waves-effect waves-light">Tambah Data
         <i class="material-icons right">touch_app</i>
     </a>
+    <a href="<?= base_url().'site/uploadfiles/'.$id_kategori?>" class="btn waves-effect waves-light">Upload File Data
+        <i class="material-icons right">touch_app</i>
+    </a>
 </p>
 <table class="table">
     <thead>

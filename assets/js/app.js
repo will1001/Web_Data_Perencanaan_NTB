@@ -5,6 +5,8 @@ var main = new Vue({
         base_url: 'http://localhost/job/Web_Data_Perencanaan_NTB/',
         lokasi: '',
         items: [],
+        Data: [],
+        kategorifiles: [],
         addKeterangan: true,
         newKeterangan: [
             {
@@ -255,6 +257,176 @@ var main = new Vue({
                 vm.newKeterangan = keterangan;
             }
             vm.update = false;
-        } 
+        },
+        txtJSON: function(txt){
+            var vm = this
+            var result = []
+            var headermodif = []
+            var lines = txt.split("\n")
+            var headers = lines[6].split('\t')
+            var headerssplit = lines[6].split('\t').splice(1, (headers.length - 5))
+            var kategorifiles = lines[0].trim();
+            var tmp = [];
+            tmp['kategori'] = kategorifiles;
+            console.log(tmp);
+            vm.getKategori(kategorifiles);
+        
+            var sub_ket1 = ""
+            var sub_ket2 = ""
+            var sub_ket3 = ""
+            var sub_ket4 = ""
+            var sub_ket5 = ""
+
+            lines.map(function (line, indexLine) {
+                if (indexLine < 7) return // Jump header line
+
+                var currentline = line.split('\t').splice(1, (headers.length - 5))
+
+                if (currentline[6] != "") {
+                    if (currentline[6] == null) return
+                    sub_ket1 = currentline[6];
+                }
+                if (currentline[7] != "") {
+                    if (currentline[7] == null) return
+                    sub_ket2 = currentline[7];
+                }
+                if (currentline[8] != "") {
+                    if (currentline[8] == null) return
+                    sub_ket3 = currentline[8];
+                }
+                if (currentline[9] != "") {
+                    if (currentline[9] == null) return
+                    sub_ket4 = currentline[9];
+                }
+                if (currentline[10] != "") {
+                    if (currentline[10] == null) return
+                    sub_ket5 = currentline[10];
+                }
+                
+
+                if (currentline[12] != "") {
+                  var obj = {}
+
+                    if (currentline[6] != "") {
+                        if (currentline[6] == null) return
+                        obj['sub_ket1'] = "";
+                        obj['sub_ket2'] = "";
+                        obj['sub_ket3'] = "";
+                        obj['sub_ket4'] = "";
+                        obj['sub_ket5'] = "";
+                        obj['sub_ket6'] = "";
+                        obj['nama_data'] = currentline[6]; 
+                    }
+                    if (currentline[7] != "") {
+                        if (currentline[7] == null) return
+                        obj['sub_ket1'] = sub_ket1;
+                        obj['sub_ket2'] = "";
+                        obj['sub_ket3'] = "";
+                        obj['sub_ket4'] = "";
+                        obj['sub_ket5'] = "";
+                        obj['nama_data'] = currentline[7]; 
+                    }
+                    if (currentline[8] != "") {
+                        if (currentline[8] == null) return
+                        obj['sub_ket1'] = sub_ket1;
+                        obj['sub_ket2'] = sub_ket2;
+                        obj['sub_ket3'] = "";
+                        obj['sub_ket4'] = "";
+                        obj['sub_ket5'] = "";
+                        obj['nama_data'] = currentline[8]; 
+                    }
+                    if (currentline[9] != "") {
+                        if (currentline[9] == null) return
+                        obj['sub_ket1'] = sub_ket1;
+                        obj['sub_ket2'] = sub_ket2;
+                        obj['sub_ket3'] = sub_ket3;
+                        obj['sub_ket4'] = "";
+                        obj['sub_ket5'] = "";
+                        obj['nama_data'] = currentline[9]; 
+                    }
+                    if (currentline[10] != "") {
+                        if (currentline[10] == null) return
+                        obj['sub_ket1'] = sub_ket1;
+                        obj['sub_ket2'] = sub_ket2;
+                        obj['sub_ket3'] = sub_ket3;
+                        obj['sub_ket4'] = sub_ket4;
+                        obj['sub_ket5'] = "";
+                        obj['nama_data'] = currentline[10]; 
+                    }
+                
+                        obj['id_prov'] = currentline[0];
+                        obj['kab_kota'] = currentline[1];
+                        obj['kec'] = currentline[2];
+                        obj['urusan'] = currentline[3];
+                        obj['id_table'] = currentline[4];
+                        obj['elemen'] = currentline[5];
+                        obj['nilai'] = currentline[12];
+                        obj['satuan'] = currentline[13];
+                        obj['tahun'] = currentline[14];
+                        obj['sumber_data'] = currentline[15];
+                          result.push(obj)
+
+
+                }else{
+                    return null
+                }
+
+
+              
+
+            })
+            console.log(result);
+           
+            vm.Data = result;
+
+            return result // JavaScript object
+        },
+        loadtxt: function(e){
+            var vm = this
+            if (window.FileReader) {
+                var reader = new FileReader();
+                reader.readAsText(e.target.files[0]);
+                // Handle errors load
+                reader.onload = function (event) {
+                    var txt = event.target.result;
+                    vm.parse_txt = vm.txtJSON(txt)
+
+                };
+                reader.onerror = function (evt) {
+                    if (evt.target.error.name == "NotReadableError") {
+                        alert("Canno't read file !");
+                    }
+                };
+            } else {
+                alert('FileReader are not supported in this browser.');
+            }
+        },
+        getKategori: function(nama){
+            console.log(nama);
+            var vm = this;
+            axios.get('http://localhost/job/Web_Data_Perencanaan_NTB/data/get_kategori_by_name/'+nama)
+            .then(function(response){
+                vm.kategorifiles = response.data;
+                console.log(vm.kategorifiles);
+            }).catch(function(error){
+                vm.kategorifiles = 'Error: '+ error;
+            });
+        },
+        //input file to database
+        addDataFiles: function(){
+            var vm = this;
+            console.log('adding data');
+            console.log('menunggu')
+            var data = JSON.stringify(vm.Data);
+            // console.log(data);
+            var url = 'http://localhost/job/Web_Data_Perencanaan_NTB/'+'data/import';
+            fd = new FormData();
+            fd.append('data1',data);
+            fd.append('id_kategori',vm.kategorifiles.id);
+            axios.post(url, fd).then(function(response) {
+                //code here 
+                console.log(response.data);
+            });
+        }
     }
 });

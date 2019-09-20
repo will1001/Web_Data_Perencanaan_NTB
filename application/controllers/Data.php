@@ -257,30 +257,9 @@ class Data extends CI_Controller
 			}
 		}
 		// Anywhere else in the script
-		echo "berhasil/n";
-		echo 'Total execution time in seconds: ' . (microtime(true) - $time_start);
-		// print_r($someArray);        // Dump all data of the Array
-		// if ($someArray[0]["elemen"]) {
-		// 	// echo "berhasil";
-		// }
-		// $data =  [
-		// 	'elemen' => $elemen,
-		// 	'id_kategori' => $id_kategori,
-		// 	'id_prov' => $id_prov,
-		// 	'id_table' => $id_table,
-		// 	'kab_kota' => $kab_kota,
-		// 	'kec' => $kec,
-		// 	'nama_data' => $nama_data,
-		// 	'nilai' => $nilai,
-		// 	'satuan' => $satuan,
-		// 	'sub_ket1' => $sub_ket1,
-		// 	'sub_ket2' => $sub_ket2,
-		// 	'sub_ket3' => $sub_ket3,
-		// 	'sub_ket4' => $sub_ket4,
-		// 	'sub_ket5' => $sub_ket5,
-		// 	'sumber_data' => $sumber_data,
-		// 	'tahun' => $tahun,
-		// 	'urusan' => $urusan,
-		// ];
+		// echo "berhasil/n";
+		// echo 'Total execution time in seconds: ' . (microtime(true) - $time_start);
+		
+		redirect(base_url() . "site/index/" . $id_kategori);
 	}
 }
