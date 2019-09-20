@@ -4,6 +4,7 @@ var main = new Vue({
     data: {
         base_url: 'http://localhost/job/Web_Data_Perencanaan_NTB/',
         lokasi: '',
+        Bulanselected:'',
         items: [],
         Data: [],
         kategorifiles: [],
@@ -412,6 +413,17 @@ var main = new Vue({
                 vm.kategorifiles = 'Error: '+ error;
             });
         },
+        getBulan: function(e){
+            console.log(e);
+            // var vm = this;
+            // axios.get('http://localhost/job/Web_Data_Perencanaan_NTB/data/get_kategori_by_name/'+nama)
+            // .then(function(response){
+            //     vm.kategorifiles = response.data;
+            //     console.log(vm.kategorifiles);
+            // }).catch(function(error){
+            //     vm.kategorifiles = 'Error: '+ error;
+            // });
+        },
         //input file to database
         addDataFiles: function(){
             var vm = this;
@@ -422,6 +434,7 @@ var main = new Vue({
             var url = 'http://localhost/job/Web_Data_Perencanaan_NTB/'+'data/import';
             fd = new FormData();
             fd.append('data1',data);
+            fd.append('bulan',vm.Bulanselected);
             fd.append('id_kategori',vm.kategorifiles.id);
             axios.post(url, fd).then(function(response) {
                 //code here 

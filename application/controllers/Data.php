@@ -191,6 +191,7 @@ class Data extends CI_Controller
 		$data1 = json_decode($data1);
 
 		$data = [];
+		$bulan = $this->input->post('bulan');
 		foreach ($data1 as $key => $dat) {
 			$id_kab_kota = $dat->kab_kota;
 			if ($id_kab_kota < 1) {
@@ -201,7 +202,8 @@ class Data extends CI_Controller
 				$nama_data = "-";
 			}
 
-			$tahun = $dat->tahun . '/01/01';
+			$tahun = $dat->tahun.'/'.$bulan.'/01';
+			echo $tahun;
 			$data[$key] = [];
 			$data[$key]['nama_data'] =  $nama_data;
 			$data[$key]['id_kategori'] =  $id_kategori;
