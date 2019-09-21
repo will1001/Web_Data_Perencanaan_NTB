@@ -1,20 +1,19 @@
-
 <h4 class="center-align">{{ kategori.nama_bagian }}</h4>
 <h2 class="center-align">Data Kategori {{ kategori.nama }}</h2>
 <h6 class="center-align">Provinsi {{ provinsi.nama }}</h6><br>
 <br><br>
 <p class="center-align">
-    <a href="<?= base_url().'site/create/'.$id_kategori?>" class="btn waves-effect waves-light">Tambah Data
+    <a href="<?= base_url() . 'site/create/' . $id_kategori ?>" class="btn waves-effect waves-light">Tambah Data
         <i class="material-icons right">touch_app</i>
     </a>
-    <a href="<?= base_url().'site/uploadfiles/'.$id_kategori?>" class="btn waves-effect waves-light">Upload File Data
+    <a href="<?= base_url() . 'site/uploadfiles/' . $id_kategori ?>" class="btn waves-effect waves-light">Upload File Data
         <i class="material-icons right">touch_app</i>
     </a>
 </p>
 <table class="table">
     <thead>
         <tr>
-        	<th>No</th>
+            <th>No</th>
             <!-- <th>id</th> -->
             <!-- <th>Provnsi</th> -->
             <th>Kabupaten/Kota</th>
@@ -43,9 +42,9 @@
             <td>{{ item.id_table }}</td>
             <td>{{ item.elemen }}</td> -->
             <td>
-                    <div v-for="ket in item.keterangan">{{ket.nama}}</div>
-                    <div><b>{{item.nama_data}}</b></div>
-                    <div v-if="item.kab_kota"><b>{{item.kab_kota.nama}}</b></div>
+                <div v-for="ket in item.keterangan">{{ket.nama}}</div>
+                <div><b>{{item.nama_data}}</b></div>
+                <!-- <div v-if="item.kab_kota"><b>{{item.kab_kota.nama}}</b></div> -->
             </td>
             <!-- <td>{{ item.nama_data }}</td> -->
             <td>{{ item.nilai }}</td>
@@ -53,7 +52,7 @@
             <td>{{ item.semester }}</td>
             <td>{{ getTahun(item.tahun) }}</td>
             <td>{{ getSumberDataId(item.id_sumber_data) }}</td>
-            <td>  
+            <td>
                 <a class="btn waves-effect waves-dark" :href="lokasi+item.id" title="Show Data"><i class="material-icons">visibility</i></a>
                 <a class="btn waves-effect waves-dark" :href="base_url+'site/update/'+item.id" title="Update Data"><i class="material-icons">edit</i></a>
                 <button class="btn waves-effect waves-dark" @click="data_delete(item)" title="Delete Data"><i class="material-icons">delete</i></button>
@@ -62,4 +61,3 @@
     </tbody>
 </table>
 <br><br><br><br><br>
-
