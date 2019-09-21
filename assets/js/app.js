@@ -8,6 +8,9 @@ var main = new Vue({
         Bulanselected: '',
         fileUpload: false,
         items: [],
+        search:'',
+        filtertahun:'',
+        filtersemester:'',
         Data: [],
         kategorifiles: [],
         addKeterangan: true,
@@ -68,6 +71,20 @@ var main = new Vue({
             //update form materialize 
             M.updateTextFields();
         }
+    },
+    computed:{
+        searchedList: function() {
+            return this.items.filter(post => {
+              return post.nama_data.toLowerCase().includes(this.search.toLowerCase())
+            })
+          },
+        filtertahunList: function() {
+            return this.items.filter(post => {
+              return post.tahun.substring(0,4).toLowerCase().includes(this.filtertahun.toLowerCase())
+            }).filter(post => {
+                return post.semester.toLowerCase().includes(this.filtersemester.toLowerCase())
+              })
+          },
     },
     methods: {
         loadData: function (id) {

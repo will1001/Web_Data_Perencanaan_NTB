@@ -11,6 +11,7 @@
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/materialize.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" href="<?= base_url() ?>assets/images/favicon.ico" type="image/gif"> 
 
     <!-- <link rel="stylesheet" href="styles.css"> -->
 
