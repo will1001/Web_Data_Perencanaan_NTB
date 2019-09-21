@@ -2,9 +2,11 @@
 var main = new Vue({
     el: '#main-app',
     data: {
+        uploadingFile: false,
         base_url: 'http://localhost/job/Web_Data_Perencanaan_NTB/',
         lokasi: '',
-        Bulanselected:'',
+        Bulanselected: '',
+        fileUpload: false,
         items: [],
         search:'',
         filtertahun:'',
@@ -31,7 +33,7 @@ var main = new Vue({
             nilai: '',
             satuan: '',
             tahun: '',
-            id_sumber_data:'',
+            id_sumber_data: '',
             created_at: '',
             updated_at: '',
         },
@@ -41,14 +43,14 @@ var main = new Vue({
                 nama_sumber: 'Badan Perencanaan Pembangunan Penelitian dan Pengembangan Daerah Provinsi Nusa Tenggara Barat',
             }
         ],
-        kab_kota:[{id: '', nama: ''}],
+        kab_kota: [{ id: '', nama: '' }],
         bagian: [],
         kategori: [],
         kategoriAll: [],
         provinsi: [],
         update: false,
     },
-    created: function(){
+    created: function () {
         // this.loadData();
         // this.loadKategori();
         // this.loadSumberData();
@@ -56,16 +58,16 @@ var main = new Vue({
         // this.loadKabKota();
         this.loadBagian();
     },
-    updated: function(){
+    updated: function () {
         this.loadBagian();
         var elems = document.querySelectorAll('select');
         var instances = M.FormSelect.init(elems);
-        
+
         var dropdowns = document.querySelectorAll('.dropdown-trigger')
-        for (var i = 0; i < dropdowns.length; i++){
+        for (var i = 0; i < dropdowns.length; i++) {
             M.Dropdown.init(dropdowns[i]);
         }
-        if(this.update){   
+        if (this.update) {
             //update form materialize 
             M.updateTextFields();
         }
@@ -85,160 +87,160 @@ var main = new Vue({
           },
     },
     methods: {
-        loadData: function(id){
+        loadData: function (id) {
             this.items = 'Loading';
             var vm = this;
-            axios.get(this.base_url+'data/get/'+id)
-            .then(function(response){
-                vm.items = response.data;
-            }).catch(function(error){
-                vm.items = 'Error: '+ error;
-            });
+            axios.get(this.base_url + 'data/get/' + id)
+                .then(function (response) {
+                    vm.items = response.data;
+                }).catch(function (error) {
+                    vm.items = 'Error: ' + error;
+                });
         },
-        loadData_byId: function(id){
+        loadData_byId: function (id) {
             this.items = 'Loading';
             var vm = this;
-            axios.get(this.base_url+'data/get_byId/'+id)
-            .then(function(response){
-                vm.items = response.data;
-                vm.newItem = vm.items;
-                //ubah tahun jadi date
-                vm.newItem.tahun = vm.newItem.tahun.substring(0,10);
-                // isi keterangan
-                vm.newKeterangan = vm.newItem.keterangan;
-                vm.loadKategori(vm.newItem.id_kategori);
-                //update form materialize 
-                vm.update = true;
-            }).catch(function(error){
-                vm.items = 'Error: '+ error;
-            });
+            axios.get(this.base_url + 'data/get_byId/' + id)
+                .then(function (response) {
+                    vm.items = response.data;
+                    vm.newItem = vm.items;
+                    //ubah tahun jadi date
+                    vm.newItem.tahun = vm.newItem.tahun.substring(0, 10);
+                    // isi keterangan
+                    vm.newKeterangan = vm.newItem.keterangan;
+                    vm.loadKategori(vm.newItem.id_kategori);
+                    //update form materialize 
+                    vm.update = true;
+                }).catch(function (error) {
+                    vm.items = 'Error: ' + error;
+                });
         },
-        loadKategori: function(id){
+        loadKategori: function (id) {
             var vm = this;
-            axios.get(this.base_url+'data/get_kategori/'+id)
-            .then(function(response){
-                vm.kategori = response.data;
-            }).catch(function(error){
-                vm.kategori = 'Error: '+ error;
-            });
+            axios.get(this.base_url + 'data/get_kategori/' + id)
+                .then(function (response) {
+                    vm.kategori = response.data;
+                }).catch(function (error) {
+                    vm.kategori = 'Error: ' + error;
+                });
         },
-        loadKategoriAll: function(id){
+        loadKategoriAll: function (id) {
             var vm = this;
-            axios.get(this.base_url+'data/get_kategoriAll/'+id)
-            .then(function(response){
-                vm.kategoriAll = response.data;
-            }).catch(function(error){
-                vm.kategoriAll = 'Error: '+ error;
-            });
+            axios.get(this.base_url + 'data/get_kategoriAll/' + id)
+                .then(function (response) {
+                    vm.kategoriAll = response.data;
+                }).catch(function (error) {
+                    vm.kategoriAll = 'Error: ' + error;
+                });
         },
-        loadBagian: function(){
+        loadBagian: function () {
             var vm = this;
-            axios.get(this.base_url+'data/get_bagian')
-            .then(function(response){
-                vm.bagian = response.data;
-            }).catch(function(error){
-                vm.bagian = 'Error: '+ error;
-            });
+            axios.get(this.base_url + 'data/get_bagian')
+                .then(function (response) {
+                    vm.bagian = response.data;
+                }).catch(function (error) {
+                    vm.bagian = 'Error: ' + error;
+                });
         },
-        loadSumberData: function(){
+        loadSumberData: function () {
             this.sumber_data = 'Loading';
             var vm = this;
-            axios.get(this.base_url+'data/get_sumber_data')
-            .then(function(response){
-                vm.sumber_data = response.data;
-            }).catch(function(error){
-                vm.sumber_data = 'Error: '+ error;
-            });
+            axios.get(this.base_url + 'data/get_sumber_data')
+                .then(function (response) {
+                    vm.sumber_data = response.data;
+                }).catch(function (error) {
+                    vm.sumber_data = 'Error: ' + error;
+                });
         },
-        loadProvinsi: function(){
+        loadProvinsi: function () {
             this.provinsi = 'Loading';
             var vm = this;
-            axios.get(this.base_url+'data/get_provinsi')
-            .then(function(response){
-                vm.provinsi = response.data;
-            }).catch(function(error){
-                vm.provinsi = 'Error: '+ error;
-            });
+            axios.get(this.base_url + 'data/get_provinsi')
+                .then(function (response) {
+                    vm.provinsi = response.data;
+                }).catch(function (error) {
+                    vm.provinsi = 'Error: ' + error;
+                });
         },
-        loadKabKota: function(){
+        loadKabKota: function () {
             this.kab_kota = 'Loading';
             var vm = this;
-            axios.get(this.base_url+'data/get_kab_kota')
-            .then(function(response){
-                vm.kab_kota = response.data;
-            }).catch(function(error){
-                vm.kab_kota = 'Error: '+ error;
-            });
+            axios.get(this.base_url + 'data/get_kab_kota')
+                .then(function (response) {
+                    vm.kab_kota = response.data;
+                }).catch(function (error) {
+                    vm.kab_kota = 'Error: ' + error;
+                });
         },
-        getTahun: function(timestamp){
-            if(timestamp)
+        getTahun: function (timestamp) {
+            if (timestamp)
                 return timestamp.substring(0, 4);
         },
-        getDate: function(timestamp){
-            if(timestamp){
+        getDate: function (timestamp) {
+            if (timestamp) {
                 //simpan nilai tahun
                 this.newItem.tahun = timestamp;
                 return timestamp.substring(0, 10);
             }
         },
-        getSumberDataId: function(sumberData){
-            if(!sumberData)
+        getSumberDataId: function (sumberData) {
+            if (!sumberData)
                 return 0;
             else return sumberData;
         },
-        addData: function(id_kategori){
+        addData: function (id_kategori) {
             console.log('adding Data');
             var vm = this;
             vm.newItem.id_kategori = id_kategori;
             var formData = vm.toFormData(vm.newItem);
             // keterangan
             var keterangan = vm.newKeterangan;
-            for(i in keterangan){
-                formData.append('nama_keterangan['+i+']',keterangan[i].nama);
+            for (i in keterangan) {
+                formData.append('nama_keterangan[' + i + ']', keterangan[i].nama);
             }
-            axios.post(this.base_url+'data/create', formData)
-            .then(function(response){
-                vm.loadData();
-                // console.log(response.data);
-                window.location=vm.lokasi;
-            }).catch(error => {
-                console.log(error.message);
-              });
+            axios.post(this.base_url + 'data/create', formData)
+                .then(function (response) {
+                    vm.loadData();
+                    // console.log(response.data);
+                    window.location = vm.lokasi;
+                }).catch(error => {
+                    console.log(error.message);
+                });
         },
-        data_delete: function(data){
+        data_delete: function (data) {
             console.log('deleting Data');
             // console.log(data);
             var vm = this;
             var formData = vm.toFormData(data);
-            axios.post(this.base_url+'data/delete', formData)
-            .then(function(response){
-                vm.loadData(vm.kategori.id);
-                // console.log(response.data);
-            }).catch(error => {
-                console.log(error.message);
-              });
+            axios.post(this.base_url + 'data/delete', formData)
+                .then(function (response) {
+                    vm.loadData(vm.kategori.id);
+                    // console.log(response.data);
+                }).catch(error => {
+                    console.log(error.message);
+                });
         },
-        data_update: function(data){
+        data_update: function (data) {
             console.log('Updating Data');
         },
-        data_view: function(data){
+        data_view: function (data) {
             vm.loadData();
             // console.log(response.data);
-            window.location=vm.lokasi;
+            window.location = vm.lokasi;
             console.log('Showing Data');
         },
-        toFormData: function(obj){
+        toFormData: function (obj) {
             var fd = new FormData();
-            for(var i in obj){
-                fd.append(i,obj[i]);
+            for (var i in obj) {
+                fd.append(i, obj[i]);
                 // console.log(obj[i]);
-            }return fd;
+            } return fd;
         },
-        formKeterangan_add: function(){
+        formKeterangan_add: function () {
             var vm = this;
             keterangan = vm.newKeterangan;
-            i = keterangan.length-1;
-            if(i<5){
+            i = keterangan.length - 1;
+            if (i < 5) {
                 no = keterangan[i].no + 1;
                 keterangan.push({
                     no: no,
@@ -248,26 +250,26 @@ var main = new Vue({
             }
             vm.update = false;
         },
-        formKeterangan_delete: function(){
+        formKeterangan_delete: function () {
             var vm = this;
             keterangan = vm.newKeterangan;
             i = keterangan.length;
-            if(i>1){
+            if (i > 1) {
                 keterangan.pop();
             }
             vm.update = false;
         },
-        keterangan_reset: function(){
+        keterangan_reset: function () {
             var vm = this;
             keterangan = vm.newKeterangan;
             i = keterangan.length;
-            if(vm.addKeterangan){
-                while(i>0){
+            if (vm.addKeterangan) {
+                while (i > 0) {
                     keterangan.pop();
                     i--;
                 }
             }
-            else{
+            else {
                 keterangan.push({
                     no: 1,
                     nama: ''
@@ -276,7 +278,7 @@ var main = new Vue({
             }
             vm.update = false;
         },
-        txtJSON: function(txt){
+        txtJSON: function (txt) {
             var vm = this
             var result = []
             var headermodif = []
@@ -288,7 +290,7 @@ var main = new Vue({
             tmp['kategori'] = kategorifiles;
             console.log(tmp);
             vm.getKategori(kategorifiles);
-        
+
             var sub_ket1 = ""
             var sub_ket2 = ""
             var sub_ket3 = ""
@@ -320,10 +322,10 @@ var main = new Vue({
                     if (currentline[10] == null) return
                     sub_ket5 = currentline[10];
                 }
-                
+
 
                 if (currentline[12] != "") {
-                  var obj = {}
+                    var obj = {}
 
                     if (currentline[6] != "") {
                         if (currentline[6] == null) return
@@ -333,7 +335,7 @@ var main = new Vue({
                         obj['sub_ket4'] = "";
                         obj['sub_ket5'] = "";
                         obj['sub_ket6'] = "";
-                        obj['nama_data'] = currentline[6]; 
+                        obj['nama_data'] = currentline[6];
                     }
                     if (currentline[7] != "") {
                         if (currentline[7] == null) return
@@ -342,7 +344,7 @@ var main = new Vue({
                         obj['sub_ket3'] = "";
                         obj['sub_ket4'] = "";
                         obj['sub_ket5'] = "";
-                        obj['nama_data'] = currentline[7]; 
+                        obj['nama_data'] = currentline[7];
                     }
                     if (currentline[8] != "") {
                         if (currentline[8] == null) return
@@ -351,7 +353,7 @@ var main = new Vue({
                         obj['sub_ket3'] = "";
                         obj['sub_ket4'] = "";
                         obj['sub_ket5'] = "";
-                        obj['nama_data'] = currentline[8]; 
+                        obj['nama_data'] = currentline[8];
                     }
                     if (currentline[9] != "") {
                         if (currentline[9] == null) return
@@ -360,7 +362,7 @@ var main = new Vue({
                         obj['sub_ket3'] = sub_ket3;
                         obj['sub_ket4'] = "";
                         obj['sub_ket5'] = "";
-                        obj['nama_data'] = currentline[9]; 
+                        obj['nama_data'] = currentline[9];
                     }
                     if (currentline[10] != "") {
                         if (currentline[10] == null) return
@@ -369,37 +371,37 @@ var main = new Vue({
                         obj['sub_ket3'] = sub_ket3;
                         obj['sub_ket4'] = sub_ket4;
                         obj['sub_ket5'] = "";
-                        obj['nama_data'] = currentline[10]; 
+                        obj['nama_data'] = currentline[10];
                     }
-                
-                        obj['id_prov'] = currentline[0];
-                        obj['kab_kota'] = currentline[1];
-                        obj['kec'] = currentline[2];
-                        obj['urusan'] = currentline[3];
-                        obj['id_table'] = currentline[4];
-                        obj['elemen'] = currentline[5];
-                        obj['nilai'] = currentline[12];
-                        obj['satuan'] = currentline[13];
-                        obj['tahun'] = currentline[14];
-                        obj['sumber_data'] = currentline[15];
-                          result.push(obj)
+
+                    obj['id_prov'] = currentline[0];
+                    obj['kab_kota'] = currentline[1];
+                    obj['kec'] = currentline[2];
+                    obj['urusan'] = currentline[3];
+                    obj['id_table'] = currentline[4];
+                    obj['elemen'] = currentline[5];
+                    obj['nilai'] = currentline[12];
+                    obj['satuan'] = currentline[13];
+                    obj['tahun'] = currentline[14];
+                    obj['sumber_data'] = currentline[15];
+                    result.push(obj)
 
 
-                }else{
+                } else {
                     return null
                 }
 
 
-              
+
 
             })
             console.log(result);
-           
+
             vm.Data = result;
 
             return result // JavaScript object
         },
-        loadtxt: function(e){
+        loadtxt: function (e) {
             var vm = this
             if (window.FileReader) {
                 var reader = new FileReader();
@@ -408,7 +410,7 @@ var main = new Vue({
                 reader.onload = function (event) {
                     var txt = event.target.result;
                     vm.parse_txt = vm.txtJSON(txt)
-
+                    vm.fileUpload = true;
                 };
                 reader.onerror = function (evt) {
                     if (evt.target.error.name == "NotReadableError") {
@@ -419,18 +421,18 @@ var main = new Vue({
                 alert('FileReader are not supported in this browser.');
             }
         },
-        getKategori: function(nama){
+        getKategori: function (nama) {
             console.log(nama);
             var vm = this;
-            axios.get('http://localhost/job/Web_Data_Perencanaan_NTB/data/get_kategori_by_name/'+nama)
-            .then(function(response){
-                vm.kategorifiles = response.data;
-                console.log(vm.kategorifiles);
-            }).catch(function(error){
-                vm.kategorifiles = 'Error: '+ error;
-            });
+            axios.get(vm.base_url + 'data/get_kategori_by_name/' + nama)
+                .then(function (response) {
+                    vm.kategorifiles = response.data;
+                    console.log(vm.kategorifiles);
+                }).catch(function (error) {
+                    vm.kategorifiles = 'Error: ' + error;
+                });
         },
-        getBulan: function(e){
+        getBulan: function (e) {
             console.log(e);
             // var vm = this;
             // axios.get('http://localhost/job/Web_Data_Perencanaan_NTB/data/get_kategori_by_name/'+nama)
@@ -442,21 +444,27 @@ var main = new Vue({
             // });
         },
         //input file to database
-        addDataFiles: function(){
+        addDataFiles: function () {
             var vm = this;
-            console.log('adding data');
-            console.log('menunggu')
-            var data = JSON.stringify(vm.Data);
-            // console.log(data);
-            var url = 'http://localhost/job/Web_Data_Perencanaan_NTB/'+'data/import';
-            fd = new FormData();
-            fd.append('data1',data);
-            fd.append('bulan',vm.Bulanselected);
-            fd.append('id_kategori',vm.kategorifiles.id);
-            axios.post(url, fd).then(function(response) {
-                //code here 
-                console.log(response.data);
-            });
-        }
+            if (vm.fileUpload && vm.Bulanselected) {
+                vm.uploadingFile = true;
+                console.log('adding data');
+                console.log('menunggu')
+                var data = JSON.stringify(vm.Data);
+                // console.log(data);
+                var url = vm.base_url + 'data/import';
+                fd = new FormData();
+                fd.append('data1', data);
+                fd.append('bulan', vm.Bulanselected);
+                fd.append('id_kategori', vm.kategorifiles.id);
+                axios.post(url, fd).then(function (response) {
+                    //code here 
+                    console.log(response.data);
+                    // redirect
+                    // window.location = vm.lokasi;
+                });
+            }
+        },
+
     }
 });

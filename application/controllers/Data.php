@@ -202,8 +202,8 @@ class Data extends CI_Controller
 				$nama_data = "-";
 			}
 
-			$tahun = $dat->tahun.'/'.$bulan.'/01';
-			echo $tahun;
+			$tahun = $dat->tahun . '/' . $bulan . '/01';
+			// echo $tahun;
 			$data[$key] = [];
 			$data[$key]['nama_data'] =  $nama_data;
 			$data[$key]['id_kategori'] =  $id_kategori;
@@ -259,9 +259,14 @@ class Data extends CI_Controller
 			}
 		}
 		// Anywhere else in the script
-		// echo "berhasil/n";
+		echo "berhasil/n";
 		// echo 'Total execution time in seconds: ' . (microtime(true) - $time_start);
-		
+
+		// redirect(base_url() . "site/index/" . $id_kategori);
+	}
+	public function upload($id_kategori)
+	{
+
 		redirect(base_url() . "site/index/" . $id_kategori);
 	}
 }

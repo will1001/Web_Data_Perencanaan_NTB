@@ -27,7 +27,7 @@ class Site extends CI_Controller
 	{
 		$data['id_kategori'] = $id_kategori;
 		$this->load->view('templates/header');
-		$this->load->view('site/uploadfiles',$data);
+		$this->load->view('site/uploadfiles', $data);
 	}
 	public function update($id)
 	{
