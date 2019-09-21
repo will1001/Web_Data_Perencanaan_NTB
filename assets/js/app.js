@@ -8,9 +8,9 @@ var main = new Vue({
         Bulanselected: '',
         fileUpload: false,
         items: [],
-        search:'',
-        filtertahun:'',
-        filtersemester:'',
+        search: '',
+        filtertahun: '',
+        filtersemester: '',
         Data: [],
         kategorifiles: [],
         addKeterangan: true,
@@ -72,19 +72,19 @@ var main = new Vue({
             M.updateTextFields();
         }
     },
-    computed:{
-        searchedList: function() {
+    computed: {
+        searchedList: function () {
             return this.items.filter(post => {
-              return post.nama_data.toLowerCase().includes(this.search.toLowerCase())
+                return post.nama_data.toLowerCase().includes(this.search.toLowerCase())
             })
-          },
-        filtertahunList: function() {
+        },
+        filtertahunList: function () {
             return this.items.filter(post => {
-              return post.tahun.substring(0,4).toLowerCase().includes(this.filtertahun.toLowerCase())
+                return post.tahun.substring(0, 4).toLowerCase().includes(this.filtertahun.toLowerCase())
             }).filter(post => {
                 return post.semester.toLowerCase().includes(this.filtersemester.toLowerCase())
-              })
-          },
+            })
+        },
     },
     methods: {
         loadData: function (id) {
@@ -464,6 +464,12 @@ var main = new Vue({
                     // window.location = vm.lokasi;
                 });
             }
+        },
+        getData: function (data, no) {
+            var vm = this;
+            vm.newItem = data;
+            vm.newItem.no = no;
+            console.log(data);
         },
 
     }
