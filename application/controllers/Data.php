@@ -264,4 +264,9 @@ class Data extends CI_Controller
 
 		// redirect(base_url() . "site/index/" . $id_kategori);
 	}
+	public function upload($id_kategori)
+	{
+
+		redirect(base_url() . "site/index/" . $id_kategori);
+	}
 }

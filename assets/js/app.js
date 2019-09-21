@@ -6,6 +6,7 @@ var main = new Vue({
         base_url: 'http://localhost/job/Web_Data_Perencanaan_NTB/',
         lokasi: '',
         Bulanselected: '',
+        fileUpload: false,
         items: [],
         Data: [],
         kategorifiles: [],
@@ -392,7 +393,7 @@ var main = new Vue({
                 reader.onload = function (event) {
                     var txt = event.target.result;
                     vm.parse_txt = vm.txtJSON(txt)
-
+                    vm.fileUpload = true;
                 };
                 reader.onerror = function (evt) {
                     if (evt.target.error.name == "NotReadableError") {
@@ -428,20 +429,25 @@ var main = new Vue({
         //input file to database
         addDataFiles: function () {
             var vm = this;
-            vm.uploadingFile = true;
-            console.log('adding data');
-            console.log('menunggu')
-            var data = JSON.stringify(vm.Data);
-            // console.log(data);
-            var url = vm.base_url + 'data/import';
-            fd = new FormData();
-            fd.append('data1', data);
-            fd.append('bulan', vm.Bulanselected);
-            fd.append('id_kategori', vm.kategorifiles.id);
-            axios.post(url, fd).then(function (response) {
-                //code here 
-                console.log(response.data);
-            });
-        }
+            if (vm.fileUpload && vm.Bulanselected) {
+                vm.uploadingFile = true;
+                console.log('adding data');
+                console.log('menunggu')
+                var data = JSON.stringify(vm.Data);
+                // console.log(data);
+                var url = vm.base_url + 'data/import';
+                fd = new FormData();
+                fd.append('data1', data);
+                fd.append('bulan', vm.Bulanselected);
+                fd.append('id_kategori', vm.kategorifiles.id);
+                axios.post(url, fd).then(function (response) {
+                    //code here 
+                    console.log(response.data);
+                    // redirect
+                    // window.location = vm.lokasi;
+                });
+            }
+        },
+
     }
 });

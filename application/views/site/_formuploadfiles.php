@@ -9,14 +9,14 @@
     <div class="file-field input-field">
         <div class="btn">
             <span>.txt</span>
-            <input type="file" @change="loadtxt($event)">
+            <input type="file" @change="loadtxt($event)" required>
         </div>
         <div class="file-path-wrapper"></div>
         <input class="file-path validate" type="text" placeholder="Upload files data">
     </div>
 
     <div class="input-field col s12">
-        <select name="bulan" @change="getBulan(Bulanselected)" v-model="Bulanselected">
+        <select name="bulan" @change="getBulan(Bulanselected)" v-model="Bulanselected" required>
             <option value="" disabled selected>Pilih Bulan</option>
             <option value="01">Januari</option>
             <option value="02">Februari</option>

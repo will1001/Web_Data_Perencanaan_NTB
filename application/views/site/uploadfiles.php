@@ -1,7 +1,7 @@
 <h4 class="center-align">{{ kategori.nama_bagian }}</h4>
 <h3 class="center-align">Upload File Data Kategori {{ kategori.nama }}</h3>
 <h6 class="center-align">Provinsi {{ provinsi.nama }}</h6><br>
-<form action="<?= base_url() ?>site/index/<?= $id_kategori ?>" method="post">
+<form action="<?= base_url() ?>data/upload/<?= $id_kategori ?>" method="post">
 
     <?php
     $this->load->view('site/_formuploadfiles');
