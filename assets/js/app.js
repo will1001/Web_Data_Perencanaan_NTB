@@ -8,6 +8,7 @@ var main = new Vue({
         Bulanselected: '',
         fileUpload: false,
         items: [],
+        limit: 50,
         search: '',
         filtertahun: '',
         filtersemester: '',
@@ -87,6 +88,9 @@ var main = new Vue({
         },
     },
     methods: {
+        loadmore: function () {
+            this.limit+50;
+        },
         loadData: function (id) {
             this.items = 'Loading';
             var vm = this;
@@ -296,6 +300,7 @@ var main = new Vue({
             var sub_ket3 = ""
             var sub_ket4 = ""
             var sub_ket5 = ""
+            var sub_ket6 = ""
 
             lines.map(function (line, indexLine) {
                 if (indexLine < 7) return // Jump header line
@@ -322,6 +327,10 @@ var main = new Vue({
                     if (currentline[10] == null) return
                     sub_ket5 = currentline[10];
                 }
+                if (currentline[11] != "") {
+                    if (currentline[11] == null) return
+                    sub_ket6 = currentline[11];
+                }
 
 
                 if (currentline[12] != "") {
@@ -344,6 +353,7 @@ var main = new Vue({
                         obj['sub_ket3'] = "";
                         obj['sub_ket4'] = "";
                         obj['sub_ket5'] = "";
+                        obj['sub_ket6'] = "";
                         obj['nama_data'] = currentline[7];
                     }
                     if (currentline[8] != "") {
@@ -353,6 +363,7 @@ var main = new Vue({
                         obj['sub_ket3'] = "";
                         obj['sub_ket4'] = "";
                         obj['sub_ket5'] = "";
+                        obj['sub_ket6'] = "";
                         obj['nama_data'] = currentline[8];
                     }
                     if (currentline[9] != "") {
@@ -362,6 +373,7 @@ var main = new Vue({
                         obj['sub_ket3'] = sub_ket3;
                         obj['sub_ket4'] = "";
                         obj['sub_ket5'] = "";
+                        obj['sub_ket6'] = "";
                         obj['nama_data'] = currentline[9];
                     }
                     if (currentline[10] != "") {
@@ -371,6 +383,17 @@ var main = new Vue({
                         obj['sub_ket3'] = sub_ket3;
                         obj['sub_ket4'] = sub_ket4;
                         obj['sub_ket5'] = "";
+                        obj['sub_ket6'] = "";
+                        obj['nama_data'] = currentline[10];
+                    }
+                    if (currentline[10] != "") {
+                        if (currentline[10] == null) return
+                        obj['sub_ket1'] = sub_ket1;
+                        obj['sub_ket2'] = sub_ket2;
+                        obj['sub_ket3'] = sub_ket3;
+                        obj['sub_ket4'] = sub_ket4;
+                        obj['sub_ket5'] = sub_ket5;
+                        obj['sub_ket6'] = "";
                         obj['nama_data'] = currentline[10];
                     }
 

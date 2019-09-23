@@ -67,7 +67,6 @@
     </form>
 </div>
 
-<p>{{filtersemester}}</p>
 <table class="table">
     <thead>
         <tr>
@@ -83,7 +82,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr v-for="(item, no) in search!=''?searchedList:(filtertahun!='' && filtersemester!=''?filtertahunList:items.slice(0,10))">
+        <tr v-for="(item, no) in search!=''?searchedList:(filtertahun!='' && filtersemester!=''?filtertahunList:items.slice(0,limit))">
             <td>{{ ++no }}</td>
             <td>{{ item.id_kab_kota }}</td>
 
@@ -104,4 +103,10 @@
         </tr>
     </tbody>
 </table>
+<br>
+<div class="center-align">
+<a class="waves-effect waves-light btn" @click="loadmore()"><i class="material-icons left">arrow_drop_down
+</i>Load more</a>
+
+</div>
 <br><br><br><br><br>
