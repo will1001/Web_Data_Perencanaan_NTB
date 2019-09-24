@@ -1,7 +1,7 @@
 <div class="row">
 
     <div class="center-align" v-if="uploadingFile">
-        <b class="teal-text">Uploading Files</b>
+        <b class="teal-text">Processing Data</b>
         <div class="progress">
             <div class="indeterminate"></div>
         </div>
@@ -9,7 +9,7 @@
     <div class="file-field input-field">
         <div class="btn">
             <span>.txt</span>
-            <input type="file" @change="loadtxt($event)" required>
+            <input type="file" accept=".txt" @change="loadtxt($event)" required>
         </div>
         <div class="file-path-wrapper"></div>
         <input class="file-path validate" type="text" placeholder="Upload files data">

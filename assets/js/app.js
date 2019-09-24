@@ -89,7 +89,7 @@ var main = new Vue({
     },
     methods: {
         loadmore: function () {
-            this.limit+50;
+            this.limit+=50;
         },
         loadData: function (id) {
             this.items = 'Loading';
@@ -386,15 +386,15 @@ var main = new Vue({
                         obj['sub_ket6'] = "";
                         obj['nama_data'] = currentline[10];
                     }
-                    if (currentline[10] != "") {
-                        if (currentline[10] == null) return
+                    if (currentline[11] != "") {
+                        if (currentline[11] == null) return
                         obj['sub_ket1'] = sub_ket1;
                         obj['sub_ket2'] = sub_ket2;
                         obj['sub_ket3'] = sub_ket3;
                         obj['sub_ket4'] = sub_ket4;
                         obj['sub_ket5'] = sub_ket5;
                         obj['sub_ket6'] = "";
-                        obj['nama_data'] = currentline[10];
+                        obj['nama_data'] = currentline[11];
                     }
 
                     obj['id_prov'] = currentline[0];
