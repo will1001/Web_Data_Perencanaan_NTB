@@ -49,6 +49,24 @@ class Site extends CI_Controller
 		$this->load->view('templates/footer');
 		$this->load->view('site/urusan_wajib_vue');
 	}
+	public function data_rencana()
+	{
+		$data['id_kategori'] = 33;
+
+		$this->load->view('templates/header');
+		$this->load->view('site/index', $data);
+		$this->load->view('templates/footer');
+		$this->load->view('site/index_vue', $data);
+	}
+	public function data_realisasi()
+	{
+		$data['id_kategori'] = 32;
+
+		$this->load->view('templates/header');
+		$this->load->view('site/index', $data);
+		$this->load->view('templates/footer');
+		$this->load->view('site/index_vue', $data);
+	}
 	public function data_ditail($id)
 	{
 		$data['id'] = $id;
