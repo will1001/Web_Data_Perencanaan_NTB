@@ -6,13 +6,17 @@
             <div class="indeterminate"></div>
         </div>
     </div>
-    <div class="file-field input-field">
+    <div class="file-field input-field col s12">
         <div class="btn">
             <span>.txt</span>
             <input type="file" accept=".txt" @change="loadtxt($event)" required>
         </div>
         <div class="file-path-wrapper"></div>
         <input class="file-path validate" type="text" placeholder="Upload files data">
+
+        <p v-if="!fileUpload" class="red-text text-accent-3 pl-3">
+            File tidak boleh kosong
+        </p>
     </div>
 
     <div class="input-field col s12">
@@ -32,6 +36,9 @@
             <option value="12">Desember</option>
         </select>
         <label>Bulan</label>
+        <p v-if="!Bulanselected" class="red-text text-accent-3 pl-3">
+            Bulan tidak boleh kosong
+        </p>
     </div>
 
 

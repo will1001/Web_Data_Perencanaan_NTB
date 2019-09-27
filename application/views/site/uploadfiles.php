@@ -14,4 +14,6 @@ $this->load->view('templates/footer');
     main.loadKabKota();
     var lokasi = "<?= base_url() ?>site/index/" + id_kategori;
     main.lokasi = lokasi;
+    main.Bulanselected = -1;
+    main.fileUpload = -1;
 </script>

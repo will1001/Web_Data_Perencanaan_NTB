@@ -469,6 +469,9 @@ var main = new Vue({
         //input file to database
         addDataFiles: function () {
             var vm = this;
+            // kondisi awal = -1, digunakan agar pesan error input tidak langsung muncul
+            if (vm.fileUpload == -1) vm.fileUpload = false;
+            if (vm.Bulanselected == -1) vm.Bulanselected = false;
             if (vm.fileUpload && vm.Bulanselected) {
                 vm.uploadingFile = true;
                 console.log('adding data');
@@ -484,7 +487,8 @@ var main = new Vue({
                     //code here 
                     console.log(response.data);
                     // redirect
-                    // window.location = vm.lokasi;
+                    window.location = vm.lokasi;
+                    console.log(vm.lokasi);
                 });
             }
         },
