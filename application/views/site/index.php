@@ -66,7 +66,11 @@
         </div>
     </form>
 </div>
-
+<div class="right">
+    <a href="" class="btn waves-effect waves-light">Hapus Data Pertahun
+        <i class="material-icons right">delete</i>
+    </a>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -105,8 +109,8 @@
 </table>
 <br>
 <div class="center-align">
-<a class="waves-effect waves-light btn" @click="loadmore()"><i class="material-icons left">arrow_drop_down
-</i>Load more</a>
+    <a class="waves-effect waves-light btn" @click="loadmore()"><i class="material-icons left">arrow_drop_down
+        </i>Load more</a>
 
 </div>
 <br><br><br><br><br>

@@ -192,6 +192,7 @@ class Data extends CI_Controller
 
 		$data = [];
 		$bulan = $this->input->post('bulan');
+		$jmlData = 0;
 		foreach ($data1 as $key => $dat) {
 			$id_kab_kota = $dat->kab_kota;
 			if ($id_kab_kota < 1) {
@@ -257,9 +258,10 @@ class Data extends CI_Controller
 				];
 				$this->mKeterangan->add($keterangan);
 			}
+			$jmlData++;
 		}
 		// Anywhere else in the script
-		echo "berhasil/n";
+		echo "berhasil mengupload " . $jmlData . " data";
 		// echo 'Total execution time in seconds: ' . (microtime(true) - $time_start);
 
 		// redirect(base_url() . "site/index/" . $id_kategori);

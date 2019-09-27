@@ -89,7 +89,7 @@ var main = new Vue({
     },
     methods: {
         loadmore: function () {
-            this.limit+=50;
+            this.limit += 50;
         },
         loadData: function (id) {
             this.items = 'Loading';
