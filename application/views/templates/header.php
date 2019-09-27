@@ -124,8 +124,8 @@
         <li title="Data Umum"><a href="<?= base_url() ?>">Umum<i class="material-icons left">dvr</i></a></li>
         <li title="Data Urusan Pilihan"><a href="<?= base_url() ?>site/data_pilihan">Urusan Pilihan<i class="material-icons left">dvr</i></a></li>
         <li title="Data Urusan Wajib"><a href="<?= base_url() ?>site/data_wajib">Urusan Wajib<i class="material-icons left">dvr</i></a></li>
-        <li title="Data Realitas Pembangunan"><a href="<?= base_url() ?>">Realitas Pembangunan<i class="material-icons left">dvr</i></a></li>
-        <li title="Data Rencana Pembangunan"><a href="<?= base_url() ?>">Rencana Pembangunan<i class="material-icons left">dvr</i></a></li>
+        <li title="Data Realitas Pembangunan"><a href="<?= base_url() ?>site/data_realisasi">Realisasi Pembangunan<i class="material-icons left">dvr</i></a></li>
+        <li title="Data Rencana Pembangunan"><a href="<?= base_url() ?>site/data_rencana">Rencana Pembangunan<i class="material-icons left">dvr</i></a></li>
         <li><a href="<?= base_url() ?>auth/logout">Logout<i class="material-icons left">exit_to_app</i></a></li>
     </ul>
     <div id="main-app">
