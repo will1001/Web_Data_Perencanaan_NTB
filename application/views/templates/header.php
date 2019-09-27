@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>WEB SIPD</title>
+    <title>Basis Data Perencanaan NTB</title>
 
     <!-- Compiled and minified CSS -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
@@ -22,6 +22,11 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script> -->
     <script src="<?= base_url() ?>assets/js/axios.js"></script>
     <script src="<?= base_url() ?>assets/js/vue.js"></script>
+    <style>
+    ul#data {
+    width: 261px!important;
+}
+    </style>
 </head>
 
 <body>
@@ -94,18 +99,22 @@
         <li><a href="#!">Perpustakaan</a></li>
         <li><a href="#!">Kearsipan</a></li>
     </ul>
+    <ul id="data" class="dropdown-content">
+     <li><a href="<?= base_url() ?>">Data Umum</a></li>
+     <li><a href="<?= base_url() ?>site/data_pilihan">Data Urusan Pilihan</a></li>
+     <li><a href="<?= base_url() ?>site/data_wajib">Data Urusan Wajib</a></li>
+     <li><a href="<?= base_url() ?>site/data_realisasi">Data Realisasi Pembangunan</a></li>
+     <li><a href="<?= base_url() ?>site/data_rencana">Data Renacana Pembangunan</a></li>
+    </ul>
     <nav class="nav-wraper indigo">
         <div class="container">
-            <a href="<?= base_url() ?>" class="brand-logo">Web SIPD</a>
+            <a href="<?= base_url() ?>" class="brand-logo">Basis Data Perencanaan NTB</a>
             <a href="#" class="sidenav-trigger" data-target="mobile-links">
                 <i class="material-icons">menu</i>
             </a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="<?= base_url() ?>">Data Umum</a></li>
-                <li><a href="<?= base_url() ?>site/data_pilihan">Data Urusan Pilihan</a></li>
-                <li><a href="<?= base_url() ?>site/data_wajib">Data Urusan Wajib</a></li>
-                <li><a href="<?= base_url() ?>site/data_realisasi">Data Realisasi Pembangunan</a></li>
-                <li><a href="<?= base_url() ?>site/data_rencana">Data Renacana Pembangunan</a></li>
+               
+                <li><a class="dropdown-trigger" href="#!" data-target="data">Data<i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a href="<?= base_url() ?>auth/logout">Logout</a></li>
             </ul>
         </div>
