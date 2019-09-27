@@ -10,6 +10,12 @@ class Data_model extends CI_Model
 	{
 		$this->db->delete('data', array('id' => $id));
 	}
+	public function delete_pertahun($id_kategori, $tahun)
+	{
+		$this->db->where('id_kategori', $id_kategori);
+		$this->db->where('year(tahun)', $tahun);
+		$this->db->delete('data');
+	}
 
 	public function get_data_byId($id)
 	{

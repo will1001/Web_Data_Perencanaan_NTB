@@ -3,6 +3,8 @@ var main = new Vue({
     el: '#main-app',
     data: {
         uploadingFile: false,
+        deletingData: false,
+        hapusPertahun: true,
         base_url: 'http://localhost/job/Web_Data_Perencanaan_NTB/',
         lokasi: '',
         Bulanselected: '',
@@ -221,6 +223,29 @@ var main = new Vue({
                     vm.loadData(vm.kategori.id);
                     // console.log(response.data);
                 }).catch(error => {
+                    console.log(error.message);
+                });
+        },
+        data_delete_pertahun: function (tahun) {
+            console.log('deleting Data tahun ' + tahun);
+            var vm = this;
+            if (!tahun) { vm.hapusPertahun = false; return; }
+            else { vm.hapusPertahun = tahun; }
+            vm.deletingData = true;
+            var data = {
+                tahun: tahun,
+                id_kategori: vm.kategori.id,
+            };
+            // console.log(vm.kategori.id);
+            console.log(data);
+            var formData = vm.toFormData(data);
+            axios.post(this.base_url + 'data/delete_pertahun', formData)
+                .then(function (response) {
+                    vm.deletingData = false;
+                    vm.loadData(vm.kategori.id);
+                    console.log(response.data);
+                }).catch(error => {
+                    vm.deletingData = false;
                     console.log(error.message);
                 });
         },

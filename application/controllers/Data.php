@@ -176,7 +176,16 @@ class Data extends CI_Controller
 		$id = $this->input->post('id');
 		// echo 'berhasil mengakses data id-'.$id;
 		if ($id) {
-			$this->mData->delete($id); 
+			$this->mData->delete($id);
+		}
+	}
+	public function delete_pertahun()
+	{
+		$tahun = $this->input->post('tahun');
+		$id_kategori = $this->input->post('id_kategori');
+		echo 'berhasil mengakses data tahun: ' . $tahun . ' id_kategori: ' . $id_kategori;
+		if ($tahun) {
+			$this->mData->delete_pertahun($id_kategori, $tahun);
 		}
 	}
 	public function import()

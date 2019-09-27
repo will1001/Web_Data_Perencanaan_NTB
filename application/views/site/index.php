@@ -18,6 +18,40 @@
     </div>
 </div>
 
+<div class="modal white" id="modal_hapus_pertahun">
+
+    <div class="center-align"> <br>
+        <div class="pink-text text-darken-1">
+            <h5><b>Hapus data pada tahun</b></h5>
+        </div>
+        <div class="row">
+            <div class="center-align" v-if="deletingData">
+                <b class="pink-text text-darken-1">Deleting Data</b>
+                <div class="progress pink darken-1">
+                    <div class="indeterminate red lighten-4"></div>
+                </div>
+            </div>
+            <div class="input-field col s6 offset-s3">
+                <select v-model="newItem.tahun">
+                    <option value="" disabled selected>Pilih Tahun</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                </select>
+                <label>Tahun</label>
+                <p v-if="!hapusPertahun" class="red-text text-accent-3 pl-3">
+                    Tahun tidak boleh kosong
+                </p>
+            </div>
+        </div>
+        <div class="divider"></div> <br>
+        <div class="card-action center-align">
+            <a @click="data_delete_pertahun(newItem.tahun)" class="red btn-small">DELETE</a>
+            <a class="green btn-small modal-close">CANCEL</a>
+        </div> <br>
+    </div>
+</div>
+
 <div class="row">
     <form class="col s12">
         <div class="row">
@@ -67,7 +101,7 @@
     </form>
 </div>
 <div class="right">
-    <a href="" class="btn waves-effect waves-light">Hapus Data Pertahun
+    <a href="#modal_hapus_pertahun" class="btn waves-effect waves-light modal-trigger">Hapus Data Pertahun
         <i class="material-icons right">delete</i>
     </a>
 </div>
@@ -90,7 +124,7 @@
             <td>{{ ++no }}</td>
             <td>{{ item.id_kab_kota }}</td>
 
-            <td> 
+            <td>
                 <div v-for="ket in item.keterangan">{{ket.nama}}</div>
                 <div><b>{{item.nama_data}}</b></div>
             </td>
