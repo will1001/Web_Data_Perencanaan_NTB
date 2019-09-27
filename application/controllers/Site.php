@@ -51,7 +51,7 @@ class Site extends CI_Controller
 	}
 	public function data_rencana()
 	{
-		$data['id_kategori'] = 32;
+		$data['id_kategori'] = 33;
 
 		$this->load->view('templates/header');
 		$this->load->view('site/index', $data);
@@ -60,7 +60,7 @@ class Site extends CI_Controller
 	}
 	public function data_realisasi()
 	{
-		$data['id_kategori'] = 33;
+		$data['id_kategori'] = 32;
 
 		$this->load->view('templates/header');
 		$this->load->view('site/index', $data);
