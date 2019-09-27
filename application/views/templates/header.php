@@ -104,6 +104,8 @@
                 <li><a href="<?= base_url() ?>">Data Umum</a></li>
                 <li><a href="<?= base_url() ?>site/data_pilihan">Data Urusan Pilihan</a></li>
                 <li><a href="<?= base_url() ?>site/data_wajib">Data Urusan Wajib</a></li>
+                <li><a href="<?= base_url() ?>site/data_realisasi">Data Realisasi Pembangunan</a></li>
+                <li><a href="<?= base_url() ?>site/data_rencana">Data Renacana Pembangunan</a></li>
                 <li><a href="<?= base_url() ?>auth/logout">Logout</a></li>
             </ul>
         </div>

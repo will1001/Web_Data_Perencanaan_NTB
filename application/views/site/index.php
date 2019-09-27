@@ -86,7 +86,7 @@
             <td>{{ ++no }}</td>
             <td>{{ item.id_kab_kota }}</td>
 
-            <td>
+            <td> 
                 <div v-for="ket in item.keterangan">{{ket.nama}}</div>
                 <div><b>{{item.nama_data}}</b></div>
             </td>

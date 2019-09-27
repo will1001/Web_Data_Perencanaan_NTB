@@ -176,7 +176,7 @@ class Data extends CI_Controller
 		$id = $this->input->post('id');
 		// echo 'berhasil mengakses data id-'.$id;
 		if ($id) {
-			$this->mData->delete($id);
+			$this->mData->delete($id); 
 		}
 	}
 	public function import()
