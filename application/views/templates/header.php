@@ -30,6 +30,57 @@
         .margin-0 {
             margin: 0px !important;
         }
+
+        .cari-sd {}
+
+        /* .cari-sd input:focus {
+            border-bottom: none !important;
+            box-shadow: none !important;
+        } */
+
+        .cari-sd:focus {
+            position: relative;
+            z-index: 101;
+            margin-left: 10px !important;
+            width: 95% !important;
+            color: black;
+            border-bottom: none !important;
+            box-shadow: none !important;
+            /* background-color: #fafafa !important; */
+        }
+
+        ::placeholder {
+            /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: gray;
+            /* opacity: 1; */
+            /* Firefox */
+        }
+
+
+        .kotak-sumber_data {
+            margin-top: -50px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            position: relative;
+            z-index: 100;
+        }
+
+        .isi-sumber_data-kosong {
+            padding-top: 48.5px;
+        }
+
+        .isi-sumber_data {
+            position: relative;
+            z-index: 200;
+            background-color: white;
+            padding: 10px 0 10px 15px;
+            margin: 0px;
+        }
+
+        .isi-sumber_data:hover {
+            background-color: #e0e0e0;
+            color: #757575;
+            cursor: pointer;
+        }
     </style>
 </head>
 

@@ -2,6 +2,7 @@
 var main = new Vue({
     el: '#main-app',
     data: {
+        kotak_sumber_data: false,
         uploadingFile: false,
         deletingData: false,
         hapusPertahun: true,
@@ -39,6 +40,7 @@ var main = new Vue({
             id_sumber_data: '',
             created_at: '',
             updated_at: '',
+            sumber_data: '',
         },
         sumber_data: [
             {
@@ -88,6 +90,11 @@ var main = new Vue({
                 return post.semester.toLowerCase().includes(this.filtersemester.toLowerCase())
             })
         },
+        filter_sumber_data: function () {
+            return this.sumber_data.filter((data) => {
+                return data.nama_sumber.toString().toLowerCase().match(this.newItem.sumber_data.toLowerCase())
+            })
+        }
     },
     methods: {
         loadmore: function () {
@@ -523,6 +530,26 @@ var main = new Vue({
             vm.newItem.no = no;
             console.log(data);
         },
+        pilihSumberData: function (data) {
+            var vm = this;
+            vm.newItem.sumber_data = data;
+            document.getElementById("form_sumber_data").blur();
+        },
+        cekSumberData: function (data) {
+            var vm = this;
+            var ada = false;
+            for (var i = 0; i < vm.sumber_data.length; i++) {
+                if (vm.sumber_data[i].nama_sumber.toLowerCase().match(data.toLowerCase())) {
+                    vm.newItem.sumber_data = vm.sumber_data[i].nama_sumber;
+                    ada = true;
+                    break;
+                }
+            }
+            if (!ada) {
+                vm.newItem.sumber_data = '';
+            }
+            vm.kotak_sumber_data = false;
+        }
 
     }
 });
