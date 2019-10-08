@@ -531,6 +531,9 @@ var main = new Vue({
             console.log(data);
         },
         pilihSumberData: function (data) {
+            var vm = this;
+            vm.newItem.sumber_data = data.nama_sumber;
+            vm.newItem.id_sumber_data = data.id;
             document.getElementById("form_sumber_data").blur();
         },
         cekSumberData: function (nama_sumber) {

@@ -40,13 +40,15 @@
 
         .cari-sd:focus {
             position: relative;
-            z-index: 101;
-            margin-left: 10px !important;
+            z-index: 200;
+            margin-top: 10px !important;
+            margin-left: 0px !important;
+            padding-left: 10px !important;
             width: 95% !important;
             color: black;
             border-bottom: none !important;
             box-shadow: none !important;
-            /* background-color: #fafafa !important; */
+            background-color: #fff !important;
         }
 
         ::placeholder {
@@ -58,10 +60,12 @@
 
 
         .kotak-sumber_data {
-            margin-top: -50px;
+            margin-top: -53px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             position: relative;
             z-index: 100;
+            max-height: 400px;
+            overflow: scroll;
         }
 
         .isi-sumber_data-kosong {
@@ -70,7 +74,7 @@
 
         .isi-sumber_data {
             position: relative;
-            z-index: 200;
+            z-index: 101;
             background-color: white;
             padding: 10px 0 10px 15px;
             margin: 0px;

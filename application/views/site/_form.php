@@ -53,7 +53,7 @@
         <label class="active" for="form_sumber_data">Sumber Data</label>
         <div v-if="kotak_sumber_data" class="kotak-sumber_data">
             <div class="isi-sumber_data-kosong"></div>
-            <div @mousedown.prevent @click="pilihSumberData(sumber)" class="isi-sumber_data" v-for="sumber in filter_sumber_data" :value="sumber.id">{{sumber.nama_sumber}}</div>
+            <div v-for="sumber in filter_sumber_data" :value="sumber.id" @mousedown.prevent @click="pilihSumberData(sumber)" class="isi-sumber_data">{{sumber.nama_sumber}}</div>
         </div>
         <!-- <select name="id_sumber_data" id="form_id_sumber_data" v-model="newItem.id_sumber_data">
             <option value="" disabled selected>Pilih Sumber Data</option>
