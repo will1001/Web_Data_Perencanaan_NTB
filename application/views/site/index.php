@@ -51,59 +51,55 @@
         </div> <br>
     </div>
 </div>
+<div class="row margin-0">
+    <div class="input-field col s6 margin-0">
+        <a href="<?= base_url() . 'site/create/' . $id_kategori ?>" class="btn waves-effect waves-light">Tambah
+            <i class="material-icons left">add</i>
+        </a>
+        <a href="<?= base_url() . 'site/uploadfiles/' . $id_kategori ?>" class="btn waves-effect waves-light">Upload
+            <i class="material-icons right">file_upload</i>
+        </a>
+        <a href="#modal_hapus_pertahun" class="btn waves-effect waves-light modal-trigger">Hapus
+            <i class="material-icons right">delete</i>
+        </a>
+    </div>
+    <div class="input-field col s6 margin-0">
+        <i class="material-icons prefix">search</i>
+        <input v-model="search" id="search" type="text" class="validate">
+        <label for="search">Cari Data</label>
+    </div>
+</div>
 
-<div class="row">
-    <form class="col s12">
-        <div class="row">
-            <div class="input-field col s6">
-                <a href="<?= base_url() . 'site/create/' . $id_kategori ?>" class="btn waves-effect waves-light">Tambah Data
-                    <i class="material-icons right">touch_app</i>
-                </a>
-                <a href="<?= base_url() . 'site/uploadfiles/' . $id_kategori ?>" class="btn waves-effect waves-light">Upload File Data
-                    <i class="material-icons right">touch_app</i>
-                </a>
-            </div>
-            <div class="input-field col s6">
-                <i class="material-icons prefix">search</i>
-                <input v-model="search" id="search" type="text" class="validate">
-                <label for="search">Cari Data</label>
-            </div>
+<div class="row margin-0">
+    <div class="input-field col s6">
+        <select v-model="filtertahun">
+            <option value="" disabled selected>Tahun</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+        </select>
+        <label>Tahun</label>
+    </div>
+    <div class="input-field col s6">
+        <div class="input-field col s2">
+            <label>
+                <input name="group1" type="radio" value="Ganjil" v-model="filtersemester" />
+                <span>Ganjil</span>
+            </label>
         </div>
-    </form>
-</div>
-<div class="row">
-    <form class="col s12">
-        <div class="row">
-            <div class="input-field col s6">
-                <select v-model="filtertahun">
-                    <option value="" disabled selected>Tahun</option>
-                    <option value="2017">2017</option>
-                    <option value="2018">2018</option>
-                    <option value="2019">2019</option>
-                </select>
-                <label>Tahun</label>
-            </div>
-            <div class="input-field col s6">
-                <div class="input-field col s3">
-                    <label>
-                        <input name="group1" type="radio" value="Ganjil" v-model="filtersemester" />
-                        <span>Ganjil</span>
-                    </label>
-                </div>
-                <div class="input-field col s3">
-                    <label>
-                        <input name="group1" type="radio" value="Genap" v-model="filtersemester" />
-                        <span>Genap</span>
-                    </label>
-                </div>
-            </div>
+        <div class="input-field col s2">
+            <label>
+                <input name="group1" type="radio" value="Genap" v-model="filtersemester" />
+                <span>Genap</span>
+            </label>
         </div>
-    </form>
-</div>
-<div class="right">
-    <a href="#modal_hapus_pertahun" class="btn waves-effect waves-light modal-trigger">Hapus Data Pertahun
-        <i class="material-icons right">delete</i>
-    </a>
+        <div class="input-field col s2">
+            <label>
+                <input name="group1" type="radio" value="" v-model="filtersemester" />
+                <span>All</span>
+            </label>
+        </div>
+    </div>
 </div>
 <table class="table">
     <thead>
