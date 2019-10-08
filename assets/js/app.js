@@ -531,16 +531,15 @@ var main = new Vue({
             console.log(data);
         },
         pilihSumberData: function (data) {
-            var vm = this;
-            vm.newItem.sumber_data = data;
             document.getElementById("form_sumber_data").blur();
         },
-        cekSumberData: function (data) {
+        cekSumberData: function (nama_sumber) {
             var vm = this;
             var ada = false;
             for (var i = 0; i < vm.sumber_data.length; i++) {
-                if (vm.sumber_data[i].nama_sumber.toLowerCase().match(data.toLowerCase())) {
+                if (vm.sumber_data[i].nama_sumber.toLowerCase().match(nama_sumber.toLowerCase())) {
                     vm.newItem.sumber_data = vm.sumber_data[i].nama_sumber;
+                    vm.newItem.id_sumber_data = vm.sumber_data[i].id;
                     ada = true;
                     break;
                 }
