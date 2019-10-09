@@ -50,8 +50,8 @@
         </div> <br>
     </div>
 </div>
-<div class="row margin-0">
-    <div class="input-field col s6 margin-0">
+<div class="row">
+    <div class="input-field col s6">
         <a href="<?= base_url() . 'site/create/' . $id_kategori ?>" class="btn waves-effect waves-light">Tambah
             <i class="material-icons left">add</i>
         </a>
@@ -62,14 +62,14 @@
             <i class="material-icons right">delete</i>
         </a>
     </div>
-    <div class="input-field col s6 margin-0">
+    <div class="input-field col s6">
         <i class="material-icons prefix">search</i>
         <input v-model="search" id="search" type="text" class="validate">
         <label for="search">Cari Data</label>
     </div>
 </div>
 
-<div class="row margin-0">
+<div class="row">
     <div class="input-field col s6">
         <select v-model="filtertahun">
             <option value="" disabled selected>Tahun</option>

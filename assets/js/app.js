@@ -61,9 +61,9 @@ var main = new Vue({
         // this.loadKategori();
         // this.loadSumberData();
         this.loadProvinsi();
-        this.listtahungenerated();
         // this.loadKabKota();
         this.loadBagian();
+        // this.listtahungenerated();
     },
     updated: function () {
         this.loadBagian();
@@ -102,9 +102,11 @@ var main = new Vue({
     },
     methods: {
         listtahungenerated:function(){
-            for (let i = 0; i < 100; i++) {
-                this.listtahun[i]=1990+i;
-            }
+            // for (let i = 0; i < 30; i++) {
+            //     this.listtahun[i]=2000+i;
+            // }
+            // console.log(this.listtahun);
+            // console.log(this.items);
         },
         loadmore: function () {
             this.limit += 50;
@@ -116,6 +118,21 @@ var main = new Vue({
             axios.get(this.base_url + 'data/get/' + id)
                 .then(function (response) {
                     vm.items = response.data;
+                    var listtahun = [];
+                    for (var i = 0; i < vm.items.length; i++) {
+                        var cek = false;
+                        var tahun = vm.items[i].tahun.substring(0,4);
+                        if(i>0){
+                            for(var j=0; j< listtahun.length; j++){
+                                if(tahun==listtahun[j]){cek = true; break;}
+                            }
+                        }
+                        if(!cek){
+                            listtahun.push(tahun);
+                        }
+                    }
+                    vm.listtahun = listtahun;
+                    vm.listtahun.sort();
                 }).catch(function (error) {
                     vm.items = 'Error: ' + error;
                 });
