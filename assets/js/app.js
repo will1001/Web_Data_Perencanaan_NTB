@@ -89,7 +89,7 @@ var main = new Vue({
         },
         filtertahunList: function () {
             return this.items.filter(post => {
-                return post.tahun.substring(0, 4).toLowerCase().includes(this.filtertahun.substring(0,4).toLowerCase())
+                return post.tahun.substring(0, 4).toLowerCase().includes(this.filtertahun.toString().substring(0,4).toLowerCase())
             }).filter(post => {
                 return post.semester.toLowerCase().includes(this.filtersemester.toLowerCase())
             })
