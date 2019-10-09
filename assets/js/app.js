@@ -105,6 +105,18 @@ var main = new Vue({
             var nama_data= this.items.filter(post => {
                 return post.nama_data.toLowerCase().includes(this.search.toLowerCase())
             })
+            var satuan= this.items.filter(post => {
+                return post.satuan.toLowerCase().includes(this.search.toLowerCase())
+            })
+            var semester= this.items.filter(post => {
+                return post.semester.toLowerCase().includes(this.search.toLowerCase())
+            })
+            var tahun= this.items.filter(post => {
+                return post.tahun.toString().toLowerCase().includes(this.search.toLowerCase())
+            })
+            var sumberData= this.items.filter(post => {
+                return(post.id_sumber_data===null?'':post.id_sumber_data).toLowerCase().includes(this.search.toLowerCase())
+            })
 
             var hasilsearch = sub_ket1.concat(sub_ket2)
             hasilsearch = hasilsearch.concat(sub_ket3)
@@ -112,6 +124,10 @@ var main = new Vue({
             hasilsearch = hasilsearch.concat(sub_ket5)
             hasilsearch = hasilsearch.concat(sub_ket6)
             hasilsearch = hasilsearch.concat(nama_data)
+            hasilsearch = hasilsearch.concat(satuan)
+            hasilsearch = hasilsearch.concat(semester)
+            hasilsearch = hasilsearch.concat(tahun)
+            hasilsearch = hasilsearch.concat(sumberData)
 
             return hasilsearch;
         },
