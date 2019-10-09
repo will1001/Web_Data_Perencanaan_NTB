@@ -12,12 +12,14 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/materialize.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" href="<?= base_url() ?>assets/images/favicon.ico" type="image/gif">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
 
     <!-- <link rel="stylesheet" href="styles.css"> -->
 
     <!-- Compiled and minified JavaScript -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
     <script src="<?= base_url() ?>assets/js/materialize.js"></script>
+   
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script> -->
     <script src="<?= base_url() ?>assets/js/axios.js"></script>

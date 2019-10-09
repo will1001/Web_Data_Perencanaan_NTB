@@ -34,10 +34,9 @@
             <div class="input-field col s6 offset-s3">
                 <select v-model="newItem.tahun">
                     <option value="" disabled selected>Pilih Tahun</option>
-                    <option value="2017">2017</option>
-                    <option value="2018">2018</option>
-                    <option value="2019">2019</option>
+                    <option v-for="tahun in listtahun" v-bind:value="tahun">{{tahun}}</option>
                 </select>
+          
                 <label>Tahun</label>
                 <p v-if="!hapusPertahun" class="red-text text-accent-3 pl-3">
                     Tahun tidak boleh kosong
@@ -74,9 +73,7 @@
     <div class="input-field col s6">
         <select v-model="filtertahun">
             <option value="" disabled selected>Tahun</option>
-            <option value="2017">2017</option>
-            <option value="2018">2018</option>
-            <option value="2019">2019</option>
+            <option v-for="tahun in listtahun" v-bind:value="tahun">{{tahun}}</option>
         </select>
         <label>Tahun</label>
     </div>
@@ -143,4 +140,9 @@
         </i>Load more</a>
 
 </div>
+<!-- <script>
+$(function() {
+    $( "#form_tahun" ).datepicker({dateFormat: 'yy'});
+});​
+</script> -->
 <br><br><br><br><br>

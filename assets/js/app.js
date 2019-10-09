@@ -16,6 +16,7 @@ var main = new Vue({
         filtertahun: '',
         filtersemester: '',
         Data: [],
+        listtahun: [],
         kategorifiles: [],
         addKeterangan: true,
         newKeterangan: [
@@ -60,6 +61,7 @@ var main = new Vue({
         // this.loadKategori();
         // this.loadSumberData();
         this.loadProvinsi();
+        this.listtahungenerated();
         // this.loadKabKota();
         this.loadBagian();
     },
@@ -78,6 +80,8 @@ var main = new Vue({
         }
     },
     computed: {
+
+        
         searchedList: function () {
             return this.items.filter(post => {
                 return post.nama_data.toLowerCase().includes(this.search.toLowerCase())
@@ -85,7 +89,7 @@ var main = new Vue({
         },
         filtertahunList: function () {
             return this.items.filter(post => {
-                return post.tahun.substring(0, 4).toLowerCase().includes(this.filtertahun.toLowerCase())
+                return post.tahun.substring(0, 4).toLowerCase().includes(this.filtertahun.substring(0,4).toLowerCase())
             }).filter(post => {
                 return post.semester.toLowerCase().includes(this.filtersemester.toLowerCase())
             })
@@ -97,8 +101,14 @@ var main = new Vue({
         }
     },
     methods: {
+        listtahungenerated:function(){
+            for (let i = 0; i < 100; i++) {
+                this.listtahun[i]=1990+i;
+            }
+        },
         loadmore: function () {
             this.limit += 50;
+
         },
         loadData: function (id) {
             this.items = 'Loading';
