@@ -164,8 +164,8 @@
         <li><a href="<?= base_url() ?>">Data Umum</a></li>
         <li><a href="<?= base_url() ?>site/data_pilihan">Data Urusan Pilihan</a></li>
         <li><a href="<?= base_url() ?>site/data_wajib">Data Urusan Wajib</a></li>
-        <li><a href="<?= base_url() ?>site/data_realisasi">Data Realisasi Pembangunan</a></li>
-        <li><a href="<?= base_url() ?>site/data_rencana">Data Rencana Pembangunan</a></li>
+        <li><a href="<?= base_url() ?>site/data_realisasi">Data Realisasi Pembangunan Provinsi NTB</a></li>
+        <li><a href="<?= base_url() ?>site/data_rencana">Data Rencana Pembangunan Provinsi NTB</a></li>
     </ul>
     <nav class="nav-wraper indigo">
         <div class="container">

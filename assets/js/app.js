@@ -83,9 +83,37 @@ var main = new Vue({
 
         
         searchedList: function () {
-            return this.items.filter(post => {
+
+            var sub_ket1= this.items.filter(post => {
+                return (typeof post.keterangan[0]!=="undefined"?post.keterangan[0].nama:'').toLowerCase().includes(this.search.toLowerCase())
+            })
+            var sub_ket2= this.items.filter(post => {
+                return (typeof post.keterangan[1]!=="undefined"?post.keterangan[1].nama:'').toLowerCase().includes(this.search.toLowerCase())
+            })
+            var sub_ket3= this.items.filter(post => {
+                return (typeof post.keterangan[2]==="undefined"?'':post.keterangan[2].nama).toLowerCase().includes(this.search.toLowerCase())
+            })
+            var sub_ket4= this.items.filter(post => {
+                return (typeof post.keterangan[3]==="undefined"?'':post.keterangan[3].nama).toLowerCase().includes(this.search.toLowerCase())
+            })
+            var sub_ket5= this.items.filter(post => {
+                return (typeof post.keterangan[4]==="undefined"?'':post.keterangan[4].nama).toLowerCase().includes(this.search.toLowerCase())
+            })
+            var sub_ket6= this.items.filter(post => {
+                return (typeof post.keterangan[5]==="undefined"?'':post.keterangan[5].nama).toLowerCase().includes(this.search.toLowerCase())
+            })
+            var nama_data= this.items.filter(post => {
                 return post.nama_data.toLowerCase().includes(this.search.toLowerCase())
             })
+
+            var hasilsearch = sub_ket1.concat(sub_ket2)
+            hasilsearch = hasilsearch.concat(sub_ket3)
+            hasilsearch = hasilsearch.concat(sub_ket4)
+            hasilsearch = hasilsearch.concat(sub_ket5)
+            hasilsearch = hasilsearch.concat(sub_ket6)
+            hasilsearch = hasilsearch.concat(nama_data)
+
+            return hasilsearch;
         },
         filtertahunList: function () {
             return this.items.filter(post => {
