@@ -160,6 +160,7 @@
         <li><a href="#!">Perpustakaan</a></li>
         <li><a href="#!">Kearsipan</a></li>
     </ul>
+
     <ul id="data" class="dropdown-content">
         <li><a href="<?= base_url() ?>">Data Umum</a></li>
         <li><a href="<?= base_url() ?>site/data_pilihan">Data Urusan Pilihan</a></li>
@@ -174,7 +175,7 @@
                 <i class="material-icons">menu</i>
             </a>
             <ul class="right hide-on-med-and-down">
-
+                <li><a href="<?= base_url() ?>user">User</a></li>
                 <li><a class="dropdown-trigger" href="#!" data-target="data">Data<i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a href="<?= base_url() ?>auth/logout">Logout</a></li>
             </ul>

@@ -6,6 +6,26 @@ class Data_model extends CI_Model
 		$this->load->database();
 		parent::__construct();
 	}
+	public function getUsers($id=FALSE){
+		if($id==FALSE){
+			$data = $this->db->get('user');
+			return  $data->result_array();
+		}else{
+			$data = $this->db->where('id', $id)->get('user');
+			return  $data->row_array();
+		}
+	}
+	public function saveUser($data){
+		$data = $this->db->insert('user',$data);
+	}
+	public function updateUser($data){
+		$this->db->where('id', $data['id']);
+		$this->db->update('user', $data);
+	}
+	public function deleteUser($id){
+		$this->db->delete('user', array('id' => $id));
+	}
+
 	public function delete($id)
 	{
 		$this->db->delete('data', array('id' => $id));
