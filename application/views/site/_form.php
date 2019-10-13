@@ -49,7 +49,7 @@
 
     <div class="input-field col s12 m12">
         <!-- buatkan dungsi ambil sumber data YANG VALID dan kalau bisa buat ngeblur setelah klik -->
-        <input class="cari-sd" @focus="kotak_sumber_data=true" @blur="cekSumberData(newItem.sumber_data)" value="" id="form_sumber_data" type="text" class="validate" v-model="newItem.sumber_data" placeholder="Pilih Sumber Data">
+        <input autocomplete="off" class="cari-sd" @focus="kotak_sumber_data=true" @blur="cekSumberData(newItem.sumber_data)" value="" id="form_sumber_data" type="text" class="validate" v-model="newItem.sumber_data" placeholder="Pilih Sumber Data">
         <label class="active" for="form_sumber_data">Sumber Data</label>
         <div v-if="kotak_sumber_data" class="kotak-sumber_data">
             <div class="isi-sumber_data-kosong"></div>
@@ -62,6 +62,7 @@
         </select>
         <label>Sumber Data</label><br> -->
     </div>
+        <input type="text" name="id_sumber_data" v-model="newItem.id_sumber_data">
     <div class="input-field col s12 m12">
         <br>
         <label>

@@ -76,7 +76,7 @@ var main = new Vue({
         }
         var elems = document.querySelectorAll('.sidenav-trigger');
         var instances = M.Sidenav.init(elems);
-        
+
         if (this.update) {
             //update form materialize 
             M.updateTextFields();
@@ -190,7 +190,14 @@ var main = new Vue({
             axios.get(this.base_url + 'data/get_byId/' + id)
                 .then(function (response) {
                     vm.items = response.data;
+
                     vm.newItem = vm.items;
+                    // for (var i = 0; i < vm.sumber_data.length; i++) {
+                    //     if(vm.sumber_data[i].id == vm.newItem.id_sumber_data){
+                    //         vm.newItem.sumber_data = vm.sumber_data[i].nama_sumber;
+                    //         break;
+                    //     }
+                    // }
                     //ubah tahun jadi date
                     vm.newItem.tahun = vm.newItem.tahun.substring(0, 10);
                     // isi keterangan

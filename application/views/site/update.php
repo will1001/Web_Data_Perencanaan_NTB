@@ -11,9 +11,9 @@
 ?>
 <script type="text/javascript">
     var id = '<?= $id ?>';
-    main.loadData_byId(id);
     main.loadSumberData();
     main.loadKabKota();
+    main.loadData_byId(id);
     var lokasi = "<?= base_url()?>site/index/"+ main.newItem.id_kategori;
     main.lokasi = lokasi;
 </script>

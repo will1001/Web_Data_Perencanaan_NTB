@@ -74,3 +74,11 @@
         </table>
     </div>
 </div>
+<?php 
+    $this->load->view('templates/footer');
+?>
+<script>
+id = '<?= $id ?>';
+main.loadData_byId(id);
+// script vue js untuk halaman data ditail
+</script>

@@ -40,7 +40,8 @@ class Data_model extends CI_Model
 	public function get_data_byId($id)
 	{
 
-		$query = $this->db->where('id', $id)->get('data');
+		$query = $this->db->select('data.*, sumber_data.nama_sumber as sumber_data')->where('data.id', $id)->from('data')
+				->join('sumber_data', 'data.id_sumber_data = sumber_data.id')->get();
 		$data = $query->result_array();
 		if (!$data) return null;
 		// Ambil Keterangan jadikan array
