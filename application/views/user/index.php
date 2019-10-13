@@ -27,5 +27,10 @@
         <?php }?>
     </table>
 </div>
-<script>
-</script>
+<h6 class="center-align">{{ provinsi.nama = "" }}</h6><br>
+<br><br>
+
+<?php
+  $this->load->view('templates/footer');
+?>
+

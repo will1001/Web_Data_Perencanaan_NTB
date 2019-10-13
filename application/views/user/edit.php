@@ -8,3 +8,6 @@
     <input type="text" name="id" id="name" value="<?= $user['id']?>" hidden>
     <button type="submit" class="btn">Save</button>
 </form>
+
+<h6 class="center-align">{{ provinsi.nama = "" }}</h6><br>
+<br><br>

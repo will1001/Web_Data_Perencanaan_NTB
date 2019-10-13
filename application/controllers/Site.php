@@ -14,8 +14,8 @@ class Site extends CI_Controller
 
 		$this->load->view('templates/header');
 		$this->load->view('site/index', $data);
-		$this->load->view('templates/footer');
-		$this->load->view('site/index_vue', $data);
+		// $this->load->view('templates/footer');
+		// $this->load->view('site/index_vue', $data);
 	}
 	public function create($id_kategori)
 	{

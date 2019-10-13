@@ -6,3 +6,6 @@
     <input type="password" name="password" id="password">
     <button type="submit" class="btn">Save</button>
 </form>
+
+<h6 class="center-align">{{ provinsi.nama = "" }}</h6><br>
+<br><br>
