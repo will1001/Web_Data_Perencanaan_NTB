@@ -74,6 +74,9 @@ var main = new Vue({
         for (var i = 0; i < dropdowns.length; i++) {
             M.Dropdown.init(dropdowns[i]);
         }
+        var elems = document.querySelectorAll('.sidenav-trigger');
+        var instances = M.Sidenav.init(elems);
+        
         if (this.update) {
             //update form materialize 
             M.updateTextFields();

@@ -92,6 +92,74 @@
 
 <body>
     <!-- Dropdown Structure -->
+    <ul id="data_urusan_pilihan1" class="dropdown-content">
+        <li><a href="#!">Kelautan dan Perikanan</a></li>
+        <li><a href="#!">Pariwisata</a></li>
+        <li><a href="#!">Pertanian</a></li>
+        <li><a href="#!">Kehutanan</a></li>
+        <li><a href="#!">Energi dan SumberDaya Mineral</a></li>
+        <li><a href="#!">Perdagangan</a></li>
+        <li><a href="#!">Perindustrian</a></li>
+        <li><a href="#!">Transmigrasi</a></li>
+    </ul>
+    <ul id="data_urusan_pilihan2" class="dropdown-content">
+        <li><a href="#!">Kelautan dan Perikanan</a></li>
+        <li><a href="#!">Pariwisata</a></li>
+        <li><a href="#!">Pertanian</a></li>
+        <li><a href="#!">Kehutanan</a></li>
+        <li><a href="#!">Energi dan SumberDaya Mineral</a></li>
+        <li><a href="#!">Perdagangan</a></li>
+        <li><a href="#!">Perindustrian</a></li>
+        <li><a href="#!">Transmigrasi</a></li>
+    </ul>
+    <ul id="data_urusan_wajib1" class="dropdown-content">
+        <li><a href="#!">Pendidikan</a></li>
+        <li><a href="#!">Kesehatan</a></li>
+        <li><a href="#!">Pekerjaan Umum dan Penataan Ruang</a></li>
+        <li><a href="#!">Perumahan dan Kawasan Permukiman</a></li>
+        <li><a href="#!">Keamanan dan Ketertiban Umum</a></li>
+        <li><a href="#!">Sosial</a></li>
+        <li><a href="#!">Tenaga Kerja</a></li>
+        <li><a href="#!">Pemberdayaan Perempuan dan Perlindungan Anak</a></li>
+        <li><a href="#!">Pangan</a></li>
+        <li><a href="#!">Pertanahan</a></li>
+        <li><a href="#!">Lingkungan Hidup</a></li>
+        <li><a href="#!">Administrasi Kependudukan dan Pencatatan Sipil</a></li>
+        <li><a href="#!">Pemberdayaan Masyarakat Desa</a></li>
+        <li><a href="#!">Pengendalian Penduduk dan Keluarga Berencana</a></li>
+        <li><a href="#!">Perhubungan</a></li>
+        <li><a href="#!">Komunikasi dan Informatika</a></li>
+        <li><a href="#!">Koperasi Usaha Kecil dan Menengah</a></li>
+        <li><a href="#!">Penanaman Modal</a></li>
+        <li><a href="#!">Kepemudaan dan Olahraga</a></li>
+        <li><a href="#!">Kebudayaan</a></li>
+        <li><a href="#!">Perpustakaan</a></li>
+        <li><a href="#!">Kearsipan</a></li>
+    </ul>
+    <ul id="data_urusan_wajib2" class="dropdown-content">
+        <li><a href="#!">Pendidikan</a></li>
+        <li><a href="#!">Kesehatan</a></li>
+        <li><a href="#!">Pekerjaan Umum dan Penataan Ruang</a></li>
+        <li><a href="#!">Perumahan dan Kawasan Permukiman</a></li>
+        <li><a href="#!">Keamanan dan Ketertiban Umum</a></li>
+        <li><a href="#!">Sosial</a></li>
+        <li><a href="#!">Tenaga Kerja</a></li>
+        <li><a href="#!">Pemberdayaan Perempuan dan Perlindungan Anak</a></li>
+        <li><a href="#!">Pangan</a></li>
+        <li><a href="#!">Pertanahan</a></li>
+        <li><a href="#!">Lingkungan Hidup</a></li>
+        <li><a href="#!">Administrasi Kependudukan dan Pencatatan Sipil</a></li>
+        <li><a href="#!">Pemberdayaan Masyarakat Desa</a></li>
+        <li><a href="#!">Pengendalian Penduduk dan Keluarga Berencana</a></li>
+        <li><a href="#!">Perhubungan</a></li>
+        <li><a href="#!">Komunikasi dan Informatika</a></li>
+        <li><a href="#!">Koperasi Usaha Kecil dan Menengah</a></li>
+        <li><a href="#!">Penanaman Modal</a></li>
+        <li><a href="#!">Kepemudaan dan Olahraga</a></li>
+        <li><a href="#!">Kebudayaan</a></li>
+        <li><a href="#!">Perpustakaan</a></li>
+        <li><a href="#!">Kearsipan</a></li>
+    </ul>
 
     <ul id="data" class="dropdown-content">
         <li><a href="<?= base_url() ?>">Data Umum</a></li>
@@ -107,7 +175,6 @@
                 <i class="material-icons">menu</i>
             </a>
             <ul class="right hide-on-med-and-down">
-
                 <?php if($this->session->userdata('role_id') == 1):?>
                     <li><a href="<?= base_url() ?>user">User</a></li>
                 <?php endif; ?>
@@ -118,6 +185,9 @@
     </nav>
     <ul class="sidenav" id="mobile-links">
         <li class="indigo darken-2 white-text center-align">Menu</li>
+        <?php if($this->session->userdata('role_id') == 1):?>
+            <li><a href="<?= base_url() ?>user">User<i class="material-icons left">account_box</i></a></li>
+        <?php endif; ?>
         <li title="Data Umum"><a href="<?= base_url() ?>">Umum<i class="material-icons left">dvr</i></a></li>
         <li title="Data Urusan Pilihan"><a href="<?= base_url() ?>site/data_pilihan">Urusan Pilihan<i class="material-icons left">dvr</i></a></li>
         <li title="Data Urusan Wajib"><a href="<?= base_url() ?>site/data_wajib">Urusan Wajib<i class="material-icons left">dvr</i></a></li>
