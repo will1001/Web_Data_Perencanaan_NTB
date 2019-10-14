@@ -62,7 +62,8 @@
         </select>
         <label>Sumber Data</label><br> -->
     </div>
-        <input type="text" name="id_sumber_data" v-model="newItem.id_sumber_data">
+    <!-- hidden input id_sumber_data -->
+        <input type="text" name="id_sumber_data" v-model="newItem.id_sumber_data" hidden="">
     <div class="input-field col s12 m12">
         <br>
         <label>
