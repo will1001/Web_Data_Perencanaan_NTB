@@ -190,7 +190,7 @@ class Data extends CI_Controller
 	}
 	public function import()
 	{
-		set_time_limit(1000);
+		set_time_limit(10000);
 
 		// At start of script
 		$time_start = microtime(true);
@@ -226,12 +226,14 @@ class Data extends CI_Controller
 			$id_sumber_data = null;
 			if ($dat->sumber_data) {
 				// id_sumber_data tidak selalu ada
-				if (!$this->mData->get_sumber_data($dat->sumber_data)) {
-					// echo $dat->sumber_data;
-					$this->mData->add_sumber_data($dat->sumber_data);
-					// tambah sumber data jika id tidak ditemukan
-				}
 				$id_sumber_data = $dat->sumber_data;
+				if (!$this->mData->get_sumber_data($dat->sumber_data)) {
+					// Jika tidak ada sumber_Data
+					$id_sumber_data = 1;
+				}
+			}
+			if($id_sumber_data == 0){
+				$id_sumber_data = 1;
 			}
 			$data[$key]['id_sumber_data'] = $id_sumber_data;
 			$data[$key]['nilai'] =  $dat->nilai;
