@@ -113,7 +113,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr v-for="(item, no) in search!=''?searchedList:(filtertahun!='' && filtersemester!=''?filtertahunList:items.slice(0,limit))">
+        <tr v-for="(item, no) in search!=''?searchedList:(filtertahun!=''?filtertahunList:items.slice(0,limit))">
             <td>{{ ++no }}</td>
             <td>{{ item.id_kab_kota }}</td>
 
