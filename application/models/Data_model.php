@@ -176,6 +176,11 @@ class Data_model extends CI_Model
 		$insert_id = $this->db->insert_id();
 		return $insert_id;
 	}
+	public function get_data_last_id(){
+		$this->db->select_max('id', 'last_id');
+		$query = $this->db->get('data');
+		return $query->row()->last_id;
+	}
 	public function data_update($data, $id)
 	{
 		$this->db->where('id', $id);

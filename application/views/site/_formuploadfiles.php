@@ -17,6 +17,7 @@
         <p v-if="!fileUpload" class="red-text text-accent-3 pl-3">
             File tidak boleh kosong
         </p>
+        <input type="text" name="id_kategori" :value="id_kategori = <?= $id_kategori ?>" hidden="">
     </div>
 
     <div class="input-field col s12">

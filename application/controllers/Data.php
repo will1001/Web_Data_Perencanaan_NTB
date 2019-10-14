@@ -188,6 +188,9 @@ class Data extends CI_Controller
 			$this->mData->delete_pertahun($id_kategori, $tahun);
 		}
 	}
+	// public function coba(){
+	// 	print_r($this->mData->get_data_last_id());
+	// }
 	public function import()
 	{
 		set_time_limit(10000);
@@ -202,56 +205,46 @@ class Data extends CI_Controller
 		$data = [];
 		$bulan = $this->input->post('bulan');
 		$jmlData = 0;
-		foreach ($data1 as $key => $dat) {
-			$id_kab_kota = $dat->kab_kota;
-			if ($id_kab_kota < 1) {
-				$id_kab_kota = null;
-			}
-			$nama_data = $dat->nama_data;
-			if (!$nama_data) {
-				$nama_data = "-";
-			}
+		$id_data = $this->mData->get_data_last_id();
 
+
+		$dataKeterangan = [];
+		$dataLabel = [];
+
+		$nL = 0;
+		$nK = 0; 
+
+		foreach ($data1 as $key => $dat) {
 			$tahun = $dat->tahun . '/' . $bulan . '/01';
 			// echo $tahun;
 			$data[$key] = [];
-			$data[$key]['nama_data'] =  $nama_data;
-			$data[$key]['id_kategori'] =  $id_kategori;
+			$data[$key]['id'] = ++$id_data;
+			$data[$key]['nama_data'] =  $dat->nama_data;
+			$data[$key]['id_kategori'] =  $dat->id_kategori;
 			$data[$key]['id_prov'] =  52;
-			$data[$key]['id_kab_kota'] =  $id_kab_kota;
+			$data[$key]['id_kab_kota'] =  $dat->id_kab_kota;
 			$data[$key]['kec'] =  $dat->kec;
 			$data[$key]['urusan'] =  $dat->urusan;
 			$data[$key]['id_table'] =  $dat->id_table;
 			$data[$key]['elemen'] =  $dat->elemen;
-			$id_sumber_data = null;
-			if ($dat->sumber_data) {
-				// id_sumber_data tidak selalu ada
-				$id_sumber_data = $dat->sumber_data;
-				if (!$this->mData->get_sumber_data($dat->sumber_data)) {
-					// Jika tidak ada sumber_Data
-					$id_sumber_data = 1;
-				}
-			}
-			if($id_sumber_data == 0){
-				$id_sumber_data = 1;
-			}
-			$data[$key]['id_sumber_data'] = $id_sumber_data;
+			$data[$key]['id_sumber_data'] = $dat->id_sumber_data;
+
 			$data[$key]['nilai'] =  $dat->nilai;
 			$data[$key]['satuan'] =  $dat->satuan;
 			$data[$key]['tahun'] =  $tahun;
 			$data[$key]['created_at'] =  date("Y/m/d");
 			$data[$key]['updated_at'] =  null;
-			//Tambah Data baru 
-			$id_data = $this->mData->add_data($data[$key]);
+
 			$nama_keterangan = [];
 			$id_labels = [];
-			$data[$key]['keterangan'] =  [];
+			$keterangan_tmp =  [];
 			$j = 0;
 			$dat_ket = (array) $dat;
+
 			for ($i = 0; $i < 5; $i++) {
 				$keterangan = $nama_keterangan[$i] = $dat_ket['sub_ket' . ($i + 1)];
 				if (!$keterangan) continue; //abaikan jika keterangan kosong/null
-				$data[$key]['keterangan'][$j++] = $keterangan;
+				$keterangan_tmp[$j++] = $keterangan;
 				$label = [
 					'nama' => $keterangan,
 				];
@@ -261,16 +254,20 @@ class Data extends CI_Controller
 				if (!$id_labels[$i])
 					$id_labels[$i] = $this->mLabel->add($label);
 			}
+
 			// simpan semua keterangan, sebanyak keterangan yang di inputkan
 			foreach ($id_labels as $id_label) {
-				$keterangan = [
+				$dataKeterangan[$nK++] = [
 					'id_data' => $id_data,
 					'id_label' => $id_label,
 				];
-				$this->mKeterangan->add($keterangan);
+				// $this->mKeterangan->add($keterangan);
 			}
 			$jmlData++;
 		}
+		$this->db->insert_batch('data', $data); 
+		$this->db->insert_batch('keterangan', $dataKeterangan); 
+
 		// Anywhere else in the script
 		echo "berhasil mengupload " . $jmlData . " data";
 		// echo 'Total execution time in seconds: ' . (microtime(true) - $time_start);

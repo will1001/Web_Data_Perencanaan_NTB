@@ -55,6 +55,7 @@ var main = new Vue({
         kategoriAll: [],
         provinsi: [],
         update: false,
+        id_kategori: '',
     },
     created: function () {
         // this.loadData();
@@ -391,6 +392,8 @@ var main = new Vue({
         },
         txtJSON: function (txt) {
             var vm = this
+            var id_kategori = vm.id_kategori;
+            // console.log(id_kategori);
             var result = []
             var headermodif = []
             var lines = txt.split("\n")
@@ -503,9 +506,16 @@ var main = new Vue({
                         obj['sub_ket6'] = "";
                         obj['nama_data'] = currentline[11];
                     }
+                    if (!obj['nama_data']) {
+                         obj['nama_data'] = "-";
+                    }
 
                     obj['id_prov'] = currentline[0];
-                    obj['kab_kota'] = currentline[1];
+                    obj['id_kab_kota'] = currentline[1];
+                    console.log(obj['id_kab_kota']);
+                    if (Number(obj['id_kab_kota']) < 1) {
+                        obj['id_kab_kota'] = null;
+                    }
                     obj['kec'] = currentline[2];
                     obj['urusan'] = currentline[3];
                     obj['id_table'] = currentline[4];
@@ -514,6 +524,18 @@ var main = new Vue({
                     obj['satuan'] = currentline[13];
                     obj['tahun'] = currentline[14];
                     obj['sumber_data'] = currentline[15];
+                    if(Number(obj['sumber_data']) == 0){
+                        obj['id_sumber_data'] = 1;
+                    }else{
+                        obj['id_sumber_data'] = 1;
+                        for (var i = 0; i < vm.sumber_data.length; i++) {
+                            if(vm.sumber_data[i].id == Number(obj['sumber_data'])){
+                                obj['id_sumber_data'] = Number(vm.sumber_data[i].id);
+                                break;
+                            }
+                        }
+                    }
+                    obj['id_kategori'] = id_kategori;
                     result.push(obj)
 
 
