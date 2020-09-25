@@ -6,7 +6,7 @@ var main = new Vue({
         uploadingFile: false,
         deletingData: false,
         hapusPertahun: true,
-        base_url: 'https://web-bappeda.herokuapp.com',
+        base_url: 'https://web-bappeda.herokuapp.com/',
         lokasi: '',
         Bulanselected: '',
         fileUpload: false,
