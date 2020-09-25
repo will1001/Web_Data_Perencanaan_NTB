@@ -6,7 +6,7 @@ var main = new Vue({
         uploadingFile: false,
         deletingData: false,
         hapusPertahun: true,
-        base_url: 'http://localhost:8080/Web_Data_Perencanaan_NTB/',
+        base_url: 'https://web-bappeda.herokuapp.com',
         lokasi: '',
         Bulanselected: '',
         fileUpload: false,
