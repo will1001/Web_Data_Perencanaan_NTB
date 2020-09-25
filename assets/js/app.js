@@ -6,7 +6,7 @@ var main = new Vue({
         uploadingFile: false,
         deletingData: false,
         hapusPertahun: true,
-        base_url: 'http://localhost/job/Web_Data_Perencanaan_NTB/',
+        base_url: 'http://localhost:8080/Web_Data_Perencanaan_NTB/',
         lokasi: '',
         Bulanselected: '',
         fileUpload: false,
@@ -587,7 +587,7 @@ var main = new Vue({
         getBulan: function (e) {
             console.log(e);
             // var vm = this;
-            // axios.get('http://localhost/job/Web_Data_Perencanaan_NTB/data/get_kategori_by_name/'+nama)
+            // axios.get('http://localhost:8080/Web_Data_Perencanaan_NTB/data/get_kategori_by_name/'+nama)
             // .then(function(response){
             //     vm.kategorifiles = response.data;
             //     console.log(vm.kategorifiles);
