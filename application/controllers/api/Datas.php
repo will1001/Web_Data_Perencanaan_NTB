@@ -16,8 +16,9 @@ class Datas extends REST_Controller {
     function index_get() {
         $limit = $this->get('limit');
         if ($limit == '') {
-            $jsonData = $this->db->select("");
-            $jsonData = $this->db->get('data',10,0)->result();
+            $this->db->select("nama_data,nilai,satuan,tahun,id_sumber_data,id_kab_kota");
+            $this->db->from("data")->limit(10,0);
+            $jsonData = $this->db->get()->result();
         } else {
             $jsonData = $this->db->get('data',10,$limit)->result();
         }
