@@ -20,8 +20,11 @@ class Keterangan extends REST_Controller {
             $jsonData = $this->db->select("");
             $jsonData = $this->db->get('keterangan',10,0)->result();
         } else if($id_data != '' && $limit == '') {
+             $this->db->select("nama");
+            $this->db->from("keterangan")->limit(10,0);
+            $this->db->join('label', 'label.id = keterangan.id_label','left');
             $this->db->where('id_data', $id_data);
-            $jsonData = $this->db->get('keterangan')->result();
+            $jsonData = $this->db->get()->result();
         }else {
             $jsonData = $this->db->get('keterangan',10,$limit)->result();
         }
