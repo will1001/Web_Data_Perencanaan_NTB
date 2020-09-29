@@ -72,11 +72,12 @@ class Datas extends REST_Controller {
             $this->db->join('sumber_data', 'sumber_data.id = data.id_sumber_data','left');
             $this->db->where('id_kategori', $id_kategori);
             $this->db->where('YEAR(`tahun`)', $tahun);
-             if($semester == '1'){
-                $this->db->where('MONTH(`tahun`) <', 7);
-            }if($semester == '2'){
-                $this->db->where('MONTH(`tahun`) >', 6);
-            }
+            //  if($semester == '1'){
+            //     $this->db->where('MONTH(`tahun`) <', 7);
+            // }if($semester == '2'){
+            //     $this->db->where('MONTH(`tahun`) >', 6);
+            // }
+            $this->db->where('MONTH(`tahun`) == ', $semester);
             $jsonData = $this->db->get()->result();
         }else if($semester != '' && $sumber_data != '') {
             $this->db->select("data.id,nama_data,nilai,satuan,tahun,nama_sumber,nama");
