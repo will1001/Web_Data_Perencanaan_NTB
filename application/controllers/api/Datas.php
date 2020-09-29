@@ -60,8 +60,9 @@ class Datas extends REST_Controller {
             $this->db->like('nama_data', $cari);
             $jsonData = $this->db->get()->result();
         }else if($get_tahun != '') {
-            $this->db->select("Year('tahun')");
+            $this->db->select("YEAR(`tahun`)");
             $this->db->from("data");
+            $this->db->where('id_kategori', $id_kategori);
             $this->db->group_by("tahun");
             $jsonData = $this->db->get()->result();
         }else {
