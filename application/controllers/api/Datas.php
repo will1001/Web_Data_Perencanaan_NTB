@@ -19,7 +19,7 @@ class Datas extends REST_Controller {
         $tahun = $this->get('tahun');
         $sumber_data = $this->get('sumber_data');
         $cari = $this->get('cari');
-        $get_tahun = $this->get('get_tahun');
+        $get_group_parameter = $this->get('get_group_parameter');
         if ($limit == '' && $id_kategori == '') {
             $this->db->select("data.id,nama_data,nilai,satuan,tahun,nama_sumber,nama");
             $this->db->from("data")->limit(10,0);
@@ -59,11 +59,18 @@ class Datas extends REST_Controller {
             $this->db->where('id_kategori', $id_kategori);
             $this->db->like('nama_data', $cari);
             $jsonData = $this->db->get()->result();
-        }else if($get_tahun != '') {
+        }else if($get_group_parameter == 'tahun') {
             $this->db->select("YEAR(`tahun`)");
             $this->db->from("data");
             $this->db->where('id_kategori', $id_kategori);
             $this->db->group_by("tahun");
+            $jsonData = $this->db->get()->result();
+        }else if($get_group_parameter == 'sumber_data') {
+            $this->db->select("sumber_data.id,nama_sumber");
+            $this->db->from("data");
+            $this->db->join('sumber_data', 'sumber_data.id = data.id_sumber_data','left');
+            $this->db->where('id_kategori', $id_kategori);
+            $this->db->group_by("nama_sumber");
             $jsonData = $this->db->get()->result();
         }else {
             $this->db->select("data.id,nama_data,nilai,satuan,tahun,nama_sumber,nama");
