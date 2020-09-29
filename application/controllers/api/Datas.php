@@ -30,7 +30,7 @@ class Datas extends REST_Controller {
             $this->db->join('kab_kota', 'kab_kota.id = data.id_kab_kota','left');
             $this->db->join('sumber_data', 'sumber_data.id = data.id_sumber_data','left');
             $this->db->where('id_kategori', $id_kategori);
-            $this->db->where('tahun', $tahun);
+            $this->db->where('YEAR(`tahun`)', $tahun);
             $jsonData = $this->db->get()->result();
         }else if($sumber_data != '') {
             $this->db->select("data.id,nama_data,nilai,satuan,tahun,nama_sumber,nama");
@@ -46,7 +46,7 @@ class Datas extends REST_Controller {
             $this->db->join('kab_kota', 'kab_kota.id = data.id_kab_kota','left');
             $this->db->join('sumber_data', 'sumber_data.id = data.id_sumber_data','left');
             $this->db->where('id_kategori', $id_kategori);
-            $this->db->where('tahun', $tahun);
+            $this->db->where('YEAR(`tahun`)', $tahun);
             $this->db->where('id_sumber_data', $sumber_data);
             $jsonData = $this->db->get()->result();
         }else {
