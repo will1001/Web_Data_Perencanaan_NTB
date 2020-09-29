@@ -44,8 +44,8 @@ class Datas extends REST_Controller {
             $this->db->where('id_sumber_data', $sumber_data);
             $jsonData = $this->db->get()->result();
         }else if($semester != '') {
-            $this->db->select("MONTH(`tahun`)");
-            $this->db->from("data");
+            $this->db->select("MONTH(`tahun`),data.id,nama_data,nilai,satuan,tahun,nama_sumber,nama");
+            $this->db->from("data")->limit(10,$limit);
             $this->db->join('kab_kota', 'kab_kota.id = data.id_kab_kota','left');
             $this->db->join('sumber_data', 'sumber_data.id = data.id_sumber_data','left');
             $this->db->where('id_kategori', $id_kategori);
@@ -54,7 +54,7 @@ class Datas extends REST_Controller {
             // }if($semester == '2'){
             //     $this->db->where('MONTH(`tahun`) >', 6);
             // }
-            $this->db->where('MONTH(`tahun`) ==', $semester);
+            $this->db->where('MONTH(`tahun`)', $semester);
             $jsonData = $this->db->get()->result();
         }
         else if($tahun != '' && $sumber_data != '') {
