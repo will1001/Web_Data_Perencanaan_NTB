@@ -21,7 +21,7 @@ class Datas extends REST_Controller {
         $semester = $this->get('semester');
         $cari = $this->get('cari');
         $get_group_parameter = $this->get('get_group_parameter');
-        if($limit == '' && $id_kategori == '' && $tahun != '' && $sumber_data == '' && $semester == '') {
+        if($limit != '' && $id_kategori != '' && $tahun != '' && $sumber_data == '' && $semester == '') {
             $this->db->select("data.id,nama_data,nilai,satuan,tahun,nama_sumber,nama");
             $this->db->from("data")->limit(10,$limit);
             $this->db->join('kab_kota', 'kab_kota.id = data.id_kab_kota','left');
@@ -29,7 +29,7 @@ class Datas extends REST_Controller {
             $this->db->where('id_kategori', $id_kategori);
             $this->db->where('YEAR(`tahun`)', $tahun);
             $jsonData = $this->db->get()->result();
-        }else if($limit == '' && $id_kategori == '' && $tahun == '' && $sumber_data != '' && $semester == '') {
+        }else if($limit != '' && $id_kategori != '' && $tahun == '' && $sumber_data != '' && $semester == '') {
             $this->db->select("data.id,nama_data,nilai,satuan,tahun,nama_sumber,nama");
             $this->db->from("data")->limit(10,$limit);
             $this->db->join('kab_kota', 'kab_kota.id = data.id_kab_kota','left');
@@ -37,7 +37,7 @@ class Datas extends REST_Controller {
             $this->db->where('id_kategori', $id_kategori);
             $this->db->where('id_sumber_data', $sumber_data);
             $jsonData = $this->db->get()->result();
-        }else if($limit == '' && $id_kategori == '' && $tahun == '' && $sumber_data == '' && $semester != '') {
+        }else if($limit != '' && $id_kategori != '' && $tahun == '' && $sumber_data == '' && $semester != '') {
             $this->db->select("data.id,nama_data,nilai,satuan,tahun,nama_sumber,nama");
             $this->db->from("data")->limit(10,$limit);
             $this->db->join('kab_kota', 'kab_kota.id = data.id_kab_kota','left');
@@ -50,7 +50,7 @@ class Datas extends REST_Controller {
             }
             $jsonData = $this->db->get()->result();
         }
-        else if($limit == '' && $id_kategori == '' && $tahun != '' && $sumber_data != '' && $semester == '') {
+        else if($limit != '' && $id_kategori != '' && $tahun != '' && $sumber_data != '' && $semester == '') {
             $this->db->select("data.id,nama_data,nilai,satuan,tahun,nama_sumber,nama");
             $this->db->from("data")->limit(10,$limit);
             $this->db->join('kab_kota', 'kab_kota.id = data.id_kab_kota','left');
@@ -59,7 +59,7 @@ class Datas extends REST_Controller {
             $this->db->where('YEAR(`tahun`)', $tahun);
             $this->db->where('id_sumber_data', $sumber_data);
             $jsonData = $this->db->get()->result();
-        }else if($limit == '' && $id_kategori == '' && $tahun != '' && $sumber_data == '' && $semester != '') {
+        }else if($limit != '' && $id_kategori != '' && $tahun != '' && $sumber_data == '' && $semester != '') {
             $this->db->select("data.id,nama_data,nilai,satuan,tahun,nama_sumber,nama");
             $this->db->from("data")->limit(10,$limit);
             $this->db->join('kab_kota', 'kab_kota.id = data.id_kab_kota','left');
@@ -72,7 +72,7 @@ class Datas extends REST_Controller {
                 $this->db->where('MONTH(`tahun`) >', 6);
             }
             $jsonData = $this->db->get()->result();
-        }else if($limit == '' && $id_kategori == '' && $tahun == '' && $sumber_data == '' && $semester != '') {
+        }else if($limit != '' && $id_kategori != '' && $tahun == '' && $sumber_data == '' && $semester != '') {
             $this->db->select("data.id,nama_data,nilai,satuan,tahun,nama_sumber,nama");
             $this->db->from("data")->limit(10,$limit);
             $this->db->join('kab_kota', 'kab_kota.id = data.id_kab_kota','left');
@@ -85,7 +85,7 @@ class Datas extends REST_Controller {
             }
             $this->db->where('id_sumber_data', $sumber_data);
             $jsonData = $this->db->get()->result();
-        }else if($limit == '' && $id_kategori == '' && $tahun != '' && $sumber_data != '' && $semester != '') {
+        }else if($limit != '' && $id_kategori != '' && $tahun != '' && $sumber_data != '' && $semester != '') {
             $this->db->select("data.id,nama_data,nilai,satuan,tahun,nama_sumber,nama");
             $this->db->from("data")->limit(10,$limit);
             $this->db->join('kab_kota', 'kab_kota.id = data.id_kab_kota','left');
@@ -99,7 +99,7 @@ class Datas extends REST_Controller {
                 $this->db->where('MONTH(`tahun`) >', 6);
             }
             $jsonData = $this->db->get()->result();
-        }else if($limit == '' && $id_kategori == '' && $cari != '') {
+        }else if($limit != '' && $id_kategori != '' && $cari != '') {
             $this->db->select("data.id,nama_data,nilai,satuan,tahun,nama_sumber,nama");
             $this->db->from("data")->limit(10,$limit);
             $this->db->join('kab_kota', 'kab_kota.id = data.id_kab_kota','left');
