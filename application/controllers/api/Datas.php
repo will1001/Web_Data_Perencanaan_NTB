@@ -75,7 +75,7 @@ class Datas extends REST_Controller {
              if($semester == '1'){
                 $this->db->where('MONTH(`tahun`) <', 7);
             }if($semester == '2'){
-                $this->db->where('MONTH(`tahun`) >', 6);
+                $this->db->where('MONTH(`tahun`) ', 10);
             }
             $jsonData = $this->db->get()->result();
         }else if($semester != '' && $sumber_data != '') {
