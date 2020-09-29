@@ -111,7 +111,7 @@ class Datas extends REST_Controller {
             $this->db->select("YEAR(`tahun`)");
             $this->db->from("data");
             $this->db->where('id_kategori', $id_kategori);
-            $this->db->group_by("tahun");
+            $this->db->group_by("YEAR(`tahun`)");
             $jsonData = $this->db->get()->result();
         }else if($get_group_parameter == 'sumber_data') {
             $this->db->select("sumber_data.id,nama_sumber");
