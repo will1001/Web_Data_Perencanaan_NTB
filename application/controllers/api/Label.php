@@ -19,6 +19,7 @@ class Label extends REST_Controller {
       if($limit != '' && $id_kategori != '') {
             $this->db->select("*");
             $this->db->from("label")->limit(10,$limit);
+            $this->db->join('keterangan', 'keterangan.id_label = label.id_','left');
             $jsonData = $this->db->get()->result();
         }else{
             $this->db->select("*");
