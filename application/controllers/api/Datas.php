@@ -100,15 +100,15 @@ class Datas extends REST_Controller {
             }
             $jsonData = $this->db->get()->result();
         }else if($limit != '' && $id_kategori != '' && $cari != '') {
-            $this->db->select("data.id,nama_data,nilai,satuan,tahun,nama_sumber,nama");
+            $this->db->select("*");
             $this->db->from("data")->limit(10,$limit);
             $this->db->join('kab_kota', 'kab_kota.id = data.id_kab_kota','left');
             $this->db->join('sumber_data', 'sumber_data.id = data.id_sumber_data','left');
-            $this->db->where('id_kategori', $id_kategori);
             $this->db->join('keterangan', 'keterangan.id_data = data.id','left');
-            $this->db->join('label', 'label.id_data = Keterangan.id_label','left');
+            $this->db->where('id_kategori', $id_kategori);
+            // $this->db->join('label', 'label.id_data = Keterangan.id_label','left');
             $this->db->like('nama_data', $cari);
-            $this->db->or_like('label.nama',$cari);
+            // $this->db->or_like('label.nama',$cari);
             $jsonData = $this->db->get()->result();
         }else if($limit != '' && $id_kategori == '' && $cari != '') {
             $this->db->select("*");
