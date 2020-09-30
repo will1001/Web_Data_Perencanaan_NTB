@@ -30,8 +30,11 @@ class Label extends REST_Controller {
             $this->db->like('nama', $cari);
             $jsonData = $this->db->get()->result();
         }else{
-            $this->db->select("*");
+            $this->db->select("nama");
             $this->db->from("label")->limit(10,$limit);
+            // $this->db->join('keterangan', 'keterangan.id_label = label.id','left');
+            // $this->db->group_by('id_label');
+            $this->db->like('nama', $cari);
             $jsonData = $this->db->get()->result();
         }
 
