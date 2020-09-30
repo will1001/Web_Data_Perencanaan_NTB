@@ -19,12 +19,14 @@ class Label extends REST_Controller {
       if($limit != '') {
             $this->db->select("*");
             $this->db->from("label")->limit(10,$limit);
-            $this->db->join('keterangan', 'keterangan.id_label = label.id','right');
+            $this->db->join('keterangan', 'keterangan.id_label = label.id','left');
+            $this->db->group_by('nama');
             $jsonData = $this->db->get()->result();
       }else if($limit != '' && $cari != '') {
             $this->db->select("*");
             $this->db->from("label")->limit(10,$limit);
-            $this->db->join('keterangan', 'keterangan.id_label = label.id','right');
+            $this->db->join('keterangan', 'keterangan.id_label = label.id','left');
+            $this->db->group_by('nama');
             $this->db->like('nama', $cari);
             $jsonData = $this->db->get()->result();
         }else{
