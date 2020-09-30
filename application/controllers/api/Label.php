@@ -14,9 +14,9 @@ class Label extends REST_Controller {
 
     //Menampilkan data label
     function index_get() {
-        $id = $this->get('id'); 
+        // $id = $this->get('id'); 
         $limit = $this->get('limit'); 
-      if($limit != '' && $id_kategori != '') {
+      if($limit != '') {
             $this->db->select("*");
             $this->db->from("label")->limit(10,$limit);
             $this->db->join('keterangan', 'keterangan.id_label = label.id_','left');
