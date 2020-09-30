@@ -36,7 +36,7 @@ class Datas extends REST_Controller {
             $this->db->join('kab_kota', 'kab_kota.id = data.id_kab_kota','left');
             $this->db->join('sumber_data', 'sumber_data.id = data.id_sumber_data','left');
             $this->db->where('id_kategori', $id_kategori);
-            $this->db->where('id', $id);
+            $this->db->where('data.id', $id);
             $jsonData = $this->db->get()->result();
         }else if($limit != '' && $id_kategori != '' && $tahun == '' && $sumber_data != '' && $semester == '') {
             $this->db->select("data.id,nama_data,nilai,satuan,tahun,nama_sumber,nama");
