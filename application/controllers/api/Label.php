@@ -15,15 +15,15 @@ class Label extends REST_Controller {
     //Menampilkan data label
     function index_get() {
         $id = $this->get('id'); 
-        $limit = $this->get('limit');
-        if ($limit == '' && $id == '') {
-            $jsonData = $this->db->select("");
-            $jsonData = $this->db->get('label',10,0)->result();
-        } else if($id != '' && $limit == '') {
-            $this->db->where('id', $id);
-            $jsonData = $this->db->get('label')->result();
-        }else {
-            $jsonData = $this->db->get('label',10,$limit)->result();
+        $limit = $this->get('limit'); 
+      if($limit != '' && $id_kategori != '') {
+            $this->db->select("*");
+            $this->db->from("label")->limit(10,$limit);
+            $jsonData = $this->db->get()->result();
+        }else{
+            $this->db->select("*");
+            $this->db->from("label")->limit(10,$limit);
+            $jsonData = $this->db->get()->result();
         }
 
         $this->response($jsonData, 200);
