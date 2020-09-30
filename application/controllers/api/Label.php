@@ -14,12 +14,18 @@ class Label extends REST_Controller {
 
     //Menampilkan data label
     function index_get() {
-        // $id = $this->get('id'); 
+        $cari = $this->get('cari'); 
         $limit = $this->get('limit'); 
       if($limit != '') {
             $this->db->select("*");
             $this->db->from("label")->limit(10,$limit);
             $this->db->join('keterangan', 'keterangan.id_label = label.id_','left');
+            $jsonData = $this->db->get()->result();
+      }else if($limit != '' && $cari != '') {
+            $this->db->select("*");
+            $this->db->from("label")->limit(10,$limit);
+            $this->db->join('keterangan', 'keterangan.id_label = label.id_','left');
+            $this->db->like('label.nama', $cari);
             $jsonData = $this->db->get()->result();
         }else{
             $this->db->select("*");
