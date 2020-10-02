@@ -115,6 +115,7 @@ class Datas extends REST_Controller {
             $this->db->join('sumber_data', 'sumber_data.id = data.id_sumber_data','left');
             $this->db->where('id_kategori', $id_kategori);
             $this->db->like('nama_data', $cari);
+            $this->db->order_by('tahun', 'ASC');
             $jsonData = $this->db->get()->result();
         }else if($limit != '' && $id_kategori == '' && $cari != '') {
             $this->db->select("data.id,nama_data,nilai,satuan,tahun,nama_sumber,nama");
